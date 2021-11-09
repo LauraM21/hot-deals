@@ -2,7 +2,7 @@ class AppAssets
 {
   static String profile_pic="assets/images/WonderWomanTrenches.jpg";
 
-  static String house_01="assets/images/house_01.jpg";
+  static String applogo="assets/images/image.png";
   static String house_02="assets/images/house_02.jpg";
   static String house_03="assets/images/house_03.jpg";
 

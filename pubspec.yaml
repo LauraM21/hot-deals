@@ -31,6 +31,9 @@ dependencies:
     sdk: flutter
   get: ^4.3.8
   google_fonts: ^2.1.0
+  animated_splash_screen: ^1.1.0
+  getxfire: ^0.3.1
+
 
 
   # The following adds the Cupertino Icons font to your application.
