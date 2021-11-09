@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "326456937684",
+    "project_id": "hotdeals-dev",
+    "storage_bucket": "hotdeals-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326456937684:android:965d8794b2d92287237f41",
+        "android_client_info": {
+          "package_name": "lauramonk.app.hotdealsgemet.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326456937684-vm5s0ivalqf0pi05im2ng2b53r98n336.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0hr99TKJ8kUSZMKtGafrDaIP-7Of_3lY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326456937684-vm5s0ivalqf0pi05im2ng2b53r98n336.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lauramonk.app.hotdealsgemet">
    <application
-        android:label="hotdealsgemet"
+       android:label="${appName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
