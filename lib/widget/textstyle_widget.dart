@@ -13,3 +13,4 @@ TextStyle TextStyleWidget({
       letterSpacing: letterSpacing,
       fontWeight: fontWeight,
       fontSize: fontSize);
+}
