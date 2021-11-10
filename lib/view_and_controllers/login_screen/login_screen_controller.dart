@@ -10,7 +10,7 @@ class LoginController extends GetxController
   TextEditingController email_controller=TextEditingController();
   TextEditingController password_controller=TextEditingController();
 
-  final auth=Get.find<AuthenticationService>();
+   late final  auth= Get.find<AuthenticationService>();
   @override
   void onInit() {
 
@@ -30,14 +30,13 @@ class LoginController extends GetxController
 
   loginValidations()
  async {
-   UserCredential userData= await auth.login(email_controller.text, password_controller.text);
+    await auth.login(email_controller.text, password_controller.text);
 
-   if(userData !=null)
-     {
-       // go to home page
-       //clear textControllers
-     }
+  }
 
+  resetPassword()
+  async{
+    await auth.requestOtpMail("harikrishnarko007@gmail.com");
 
   }
 

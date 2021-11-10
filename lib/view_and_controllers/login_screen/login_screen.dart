@@ -5,6 +5,7 @@ import 'package:getxfire/getxfire.dart';
 import 'package:hotdealsgemet/core/app_rss/app_assets.dart';
 import 'package:hotdealsgemet/core/app_rss/font_size.dart';
 import 'package:hotdealsgemet/core/app_rss/font_weights.dart';
+import 'package:hotdealsgemet/view_and_controllers/create_account/create_user_screen.dart';
 import 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen_controller.dart';
 import 'package:hotdealsgemet/widget/custom_spacing.dart';
 import 'package:hotdealsgemet/widget/textstyle_widget.dart';
@@ -150,16 +151,21 @@ class LoginScreen extends GetView<LoginController> {
                   //   focusElevation:2,
                   visualDensity: VisualDensity.adaptivePlatformDensity),
               VerticalSpacing(value: 10),
-              Container(
-                width: double.infinity,
-                alignment: Alignment.centerRight,
-                //padding: EdgeInsets.only(right: 16),
-                child: Text(
-                  "Forget Password ?",
-                  style: textStyleWidget(
-                      isUnderline: true,
-                      fontSize: FontSize.subText_01,
-                      letterSpacing: 1.2,color: Colors.black.withOpacity(.8)),
+              InkWell(
+                onTap: (){
+                  controller.resetPassword();
+                },
+                child: Container(
+                  width: double.infinity,
+                  alignment: Alignment.centerRight,
+                  //padding: EdgeInsets.only(right: 16),
+                  child: Text(
+                    "Forget Password ?",
+                    style: textStyleWidget(
+                        isUnderline: true,
+                        fontSize: FontSize.subText_01,
+                        letterSpacing: 1.2,color: Colors.black.withOpacity(.8)),
+                  ),
                 ),
               ),
 
@@ -168,6 +174,7 @@ class LoginScreen extends GetView<LoginController> {
                   height: 40,
                   splashColor: Colors.red.withOpacity(.4),
                   onPressed: () async {
+       Get.to(CreateUser());
 
                   },
                   child: Text(
