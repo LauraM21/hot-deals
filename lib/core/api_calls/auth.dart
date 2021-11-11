@@ -47,6 +47,7 @@ class AuthenticationService extends GetxController
   requestOtpMail(String mail)
   async{
     await GetxFire.auth.sendPasswordResetEmail(email: mail);
+
   }
 
 
