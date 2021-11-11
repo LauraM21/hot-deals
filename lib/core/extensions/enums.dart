@@ -1,0 +1,3 @@
+ enum State {
+  Idle,Besy
+ }

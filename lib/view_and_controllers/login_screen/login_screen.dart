@@ -29,7 +29,7 @@ class LoginScreen extends GetView<LoginController> {
                   width: double.infinity,
                   height: 200,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(20),
+                  padding:const  EdgeInsets.all(20),
                   child: Image(
                     fit: BoxFit.fitHeight,
                     image: AssetImage(AppAssets.applogo),
@@ -46,6 +46,7 @@ class LoginScreen extends GetView<LoginController> {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: TextField(
+                  focusNode: controller.emailFocus,
                   controller: controller.email_controller,
                   style: textStyleWidget(
                       fontSize: FontSize.normalText,
@@ -92,6 +93,7 @@ class LoginScreen extends GetView<LoginController> {
                 ),
                 child: TextField(
                   controller: controller.password_controller,
+                  focusNode: controller.passwordFocus,
                   style: textStyleWidget(
                       fontSize: FontSize.normalText,
                       fontWeight: FontWights.normal,
@@ -122,14 +124,23 @@ class LoginScreen extends GetView<LoginController> {
               VerticalSpacing(value: 25),
               MaterialButton(
                   height: 40,
-                  onPressed: () async {
+                  onPressed:controller.isLoading ?(){} : () async {
+                    if(controller.isLoading)
+                      {
+                        return ;
+                      }
                     if (controller.email_controller.text.trim().isEmpty) {
+                      FocusScope.of(context)
+                          .requestFocus(controller.emailFocus);
                       return;
                     } else if (!controller.email_controller.text.isEmail) {
                       return;
                     }
 
                     if (controller.password_controller.text.trim().isEmpty) {
+                      FocusScope.of(context)
+                          .requestFocus(controller.passwordFocus);
+
                       return;
                     }
 
@@ -138,12 +149,20 @@ class LoginScreen extends GetView<LoginController> {
                     //     email: "harikrishnarko007@gmail.com",
                     //     password: "123456");
                   },
-                  child: Text(
-                    "Login",
-                    style: textStyleWidget(color: Colors.white),
-                  ),
+                  child: controller.isLoading
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 2,
+                          ))
+                      : Text(
+                          "Login",
+                          style: textStyleWidget(color: Colors.white),
+                        ),
                   materialTapTargetSize: MaterialTapTargetSize.padded,
-                  animationDuration: Duration(seconds: 1),
+                  animationDuration: const Duration(seconds: 1),
                   minWidth: double.infinity,
                   color: Colors.red,
                   shape: RoundedRectangleBorder(
@@ -153,9 +172,14 @@ class LoginScreen extends GetView<LoginController> {
                   visualDensity: VisualDensity.adaptivePlatformDensity),
               VerticalSpacing(value: 10),
               InkWell(
-                onTap: (){
-                 // controller.resetPassword();
-                  Get.to(ForgetPassword());
+                onTap: controller.isLoading?(){} :() {
+                  if(controller.isLoading)
+                    {
+                      return ;
+                    }
+                  controller.gotToForgetPasswordScreen();
+
+                  // controller.resetPassword();
                 },
                 child: Container(
                   width: double.infinity,
@@ -166,18 +190,21 @@ class LoginScreen extends GetView<LoginController> {
                     style: textStyleWidget(
                         isUnderline: true,
                         fontSize: FontSize.subText_01,
-                        letterSpacing: 1.2,color: Colors.black.withOpacity(.8)),
+                        letterSpacing: 1.2,
+                        color: Colors.black.withOpacity(.8)),
                   ),
                 ),
               ),
-
               VerticalSpacing(value: 25),
               MaterialButton(
                   height: 40,
                   splashColor: Colors.red.withOpacity(.4),
-                  onPressed: () async {
-       Get.to(CreateUser());
-
+                  onPressed:controller.isLoading ?(){}: () async {
+                    if(controller.isLoading)
+                      {
+                        return ;
+                      }
+                    controller.gotToCreateAccountScreen();
                   },
                   child: Text(
                     "Create a account",
@@ -200,22 +227,31 @@ class LoginScreen extends GetView<LoginController> {
                 child: Text(
                   "or",
                   style: textStyleWidget(
-
                       fontSize: FontSize.subText_01,
-                      letterSpacing: 1.2,color: Colors.black.withOpacity(.5)),
+                      letterSpacing: 1.2,
+                      color: Colors.black.withOpacity(.5)),
                 ),
               ),
               VerticalSpacing(value: 15),
-              Container(
-                width: double.infinity,
-                alignment: Alignment.center,
-                //padding: EdgeInsets.only(right: 16),
-                child: Text(
-                  "Skip",
-                  style: textStyleWidget(
-
-                      fontSize: FontSize.normalText,
-                      letterSpacing: 1.2,color: Colors.black.withOpacity(.8)),
+              InkWell(
+                onTap: controller.isLoading ? (){}:(){
+                  if(controller.isLoading)
+                    {
+                      return ;
+                    }
+                  controller.gotToHomeScreenScreen();
+                },
+                child: Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  //padding: EdgeInsets.only(right: 16),
+                  child: Text(
+                    "Skip",
+                    style: textStyleWidget(
+                        fontSize: FontSize.normalText,
+                        letterSpacing: 1.2,
+                        color: Colors.black.withOpacity(.8)),
+                  ),
                 ),
               ),
             ],
