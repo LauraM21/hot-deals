@@ -112,7 +112,7 @@ class CreateUser extends GetView<CreateUserController> {
                 ),
                 child: TextField(
                   controller: controller.password_controller,
-                  focusNode: controller.emailFocus,
+                  focusNode: controller.passwordFocus,
                   style: textStyleWidget(
                       fontSize: FontSize.normalText,
                       fontWeight: FontWights.normal,
@@ -171,7 +171,14 @@ class CreateUser extends GetView<CreateUserController> {
                           //   return;
                           // }
                         },
-                  child: Text(
+                  child:  controller.isLoading
+                      ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      )):Text(
                     "Create a account",
                     style: textStyleWidget(color: Colors.white),
                   ),

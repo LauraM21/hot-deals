@@ -40,8 +40,10 @@ class LoginController extends GetxController
     print("loginValidations called");
   await buttonControl(true);
     UserCredential date=   await auth.login(email_controller.text, password_controller.text);
+    await buttonControl(false);
+    print("loginValidations 1");
 
-    if(date.user!=null)
+    if(date!= null)
       {
         Get.to(HomeScreen());
       }
@@ -49,7 +51,6 @@ class LoginController extends GetxController
     // save the token
     // redirect to home page
     // clear the controllers
-  await buttonControl(false);
 
   }
 

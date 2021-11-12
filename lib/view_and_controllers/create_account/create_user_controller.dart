@@ -19,7 +19,7 @@ class CreateUserController extends GetxController {
     UserCredential data= await Get.find<AuthenticationService>()
         .createUserAccount(email_controller.text, password_controller.text);
 
-   if(data.user != null)
+   if(data!= null)
      {
        Get.to(HomeScreen());
 

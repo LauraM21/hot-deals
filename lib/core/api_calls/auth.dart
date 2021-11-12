@@ -15,7 +15,6 @@ class AuthenticationService extends GetxController
       password: password,
       onSuccess: (userCredential) {
         
-        print(userCredential!.user!.emailVerified);
         return userCredential;
       },
       onError: (code, message) {},
@@ -26,18 +25,20 @@ class AuthenticationService extends GetxController
 
   createUserAccount(String email,String password)
  async {
-    await GetxFire.createUserWithEmailAndPassword(
+   UserCredential? data= await GetxFire.createUserWithEmailAndPassword(
       isSuccessDialog: true,
       isErrorDialog: true,
       email:email,
       password: password,
       onSuccess: (userCredential) {
 
-        print(userCredential!.user!.emailVerified);
-        return userCredential;
+
       },
       onError: (code, message) {},
     );
+   print("-------");
+   print(data.toString());
+   return data;
 
 
 
