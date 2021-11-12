@@ -9,7 +9,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await GetxFire.init();
 await   Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -28,9 +28,9 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
-          pageTransitionsTheme: PageTransitionsTheme(builders: {
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          pageTransitionsTheme:const PageTransitionsTheme(builders: {
+            TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
+            TargetPlatform.android: ZoomPageTransitionsBuilder(),
           })),
 
       home:  SplashScreenn(),
