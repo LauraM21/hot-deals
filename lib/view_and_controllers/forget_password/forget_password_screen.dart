@@ -113,10 +113,20 @@ class ForgetPassword extends GetView<ForgetPasswordController> {
                           }
                           if (!controller.emailController.text.isEmail) {
                             return;
-                          }
+                          }else if (controller.emailController.text.trim().isEmpty)
+                            {
+                              FocusScope.of(context).requestFocus(controller.emailFocus);
+                              return ;
+                            }
                           await controller.passwordRequest();
                         },
-                  child: Text(
+                  child: controller.isLoading ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      )) :Text(
                     "Submit",
                     style: textStyleWidget(color: Colors.white),
                   ),
