@@ -13,5 +13,7 @@ TextStyle textStyleWidget({
       color: color,
       letterSpacing: letterSpacing,
       fontWeight: fontWeight,
-      fontSize: fontSize,decoration: isUnderline ? TextDecoration.underline :TextDecoration.none,);
+      fontSize: fontSize,
+    decoration: isUnderline ? TextDecoration.underline :TextDecoration.none,);
+
 }
