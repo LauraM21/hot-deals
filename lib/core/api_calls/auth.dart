@@ -3,7 +3,10 @@
 
 import 'package:getxfire/getxfire.dart';
 import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
+import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:firebase_storage/firebase_storage.dart';
 class AuthenticationService extends GetxController
 {
 
@@ -74,4 +77,29 @@ class AuthenticationService extends GetxController
   }
 
 
+}
+
+
+class FirebaseApi3 {
+  static UploadTask? uploadFile2(String destination3, File file3) {
+    try {
+      final ref3 = FirebaseStorage.instance.ref(destination3);
+
+      return ref3.putFile(file3);
+    } on FirebaseException catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  static UploadTask? uploadBytes2(String destination3, Uint8List data3) {
+    try {
+      final ref3 = FirebaseStorage.instance.ref(destination3);
+
+      return ref3.putData(data3);
+    } on FirebaseException catch (e) {
+      print(e);
+      return null;
+    }
+  }
 }

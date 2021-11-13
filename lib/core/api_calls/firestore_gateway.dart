@@ -7,4 +7,9 @@ class FireStoreGateway extends GetxController {
 
    await GetxFire.firestore.createData(collection: AppStrings.USERS, data: userData,id: userData[AppStrings.userUniqId]);
   }
+  updateUser(Map<String,dynamic> userData,String uniqueId) async {
+
+
+    await GetxFire.firestore.updateData(collection: AppStrings.USERS, data: userData,id: uniqueId);
+  }
 }

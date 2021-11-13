@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:hotdealsgemet/core/app_rss/app_assets.dart';
+import 'package:hotdealsgemet/core/app_rss/app_colors.dart';
+import 'package:hotdealsgemet/core/app_rss/font_size.dart';
 import 'package:hotdealsgemet/view_and_controllers/side_drawer/side_drawer.dart';
+
 import 'package:hotdealsgemet/widget/custom_spacing.dart';
 import 'package:hotdealsgemet/widget/textstyle_widget.dart';
 
@@ -18,14 +21,14 @@ class HomeScreen extends GetView<HomeScreenController> {
         },
         child: Scaffold(appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.red,
+          backgroundColor: AppColors.red,
           title: Row(
             children: [
               TextButton(
                   onPressed: () {
 
                   },
-                  child: Icon(Icons.emoji_emotions, color: Colors.white)),
+                  child: Icon(Icons.emoji_emotions, color: AppColors.white)),
               SizedBox(width: 10),
 
             ],
@@ -40,8 +43,8 @@ class HomeScreen extends GetView<HomeScreenController> {
                 SizedBox(height: 20,),
                 Center(child: Text("WELCOME TO....",
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
+                      color: AppColors.primaryTextColor,
+                      fontSize: FontSize.h2,
                       fontWeight: FontWeight.w700),),),
                 Container(
 
@@ -59,8 +62,8 @@ class HomeScreen extends GetView<HomeScreenController> {
                     "The app where you don't have to \n cut out coupons in order to \n SAVE MONEY!.",
                     textAlign: TextAlign.center, style: TextStyle(
 
-                      color: Colors.black,
-                      fontSize: 15,
+                      color: AppColors.primaryTextColor,
+                      fontSize: FontSize.h1,
                       fontWeight: FontWeight.w400),),
                 ),
                 Container(
@@ -86,10 +89,10 @@ class HomeScreen extends GetView<HomeScreenController> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Icon(Icons.money_off_csred_rounded,
-                                    color: Colors.white),
+                                    color: AppColors.white),
                                 Text(
                                   "FIND DEALS",
-                                  style: textStyleWidget(color: Colors.white),
+                                  style: textStyleWidget(color: AppColors.white),
                                 ),
                               ],
                             ),
@@ -97,7 +100,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                                 .padded,
                             animationDuration: Duration(seconds: 1),
                             minWidth: double.infinity,
-                            color: Colors.red,
+                            color: AppColors.red,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
 // elevation: 2,
@@ -122,10 +125,10 @@ class HomeScreen extends GetView<HomeScreenController> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Icon(Icons.search_outlined,
-                                    color: Colors.white),
+                                    color: AppColors.white),
                                 Text(
                                   "SEARCH",
-                                  style: textStyleWidget(color: Colors.white),
+                                  style: textStyleWidget(color: AppColors.white),
                                 ),
                               ],
                             ),
@@ -133,7 +136,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                                 .padded,
                             animationDuration: Duration(seconds: 1),
                             minWidth: double.infinity,
-                            color: Colors.red,
+                            color: AppColors.red,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
 // elevation: 2,
@@ -152,10 +155,10 @@ class HomeScreen extends GetView<HomeScreenController> {
                                   .spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.check, color: Colors.white),
+                                Icon(Icons.check, color: AppColors.white),
                                 Text(
                                   "FAQ",
-                                  style: textStyleWidget(color: Colors.white),
+                                  style: textStyleWidget(color: AppColors.white),
                                 ),
                               ],
                             ),
@@ -163,7 +166,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                                 .padded,
                             animationDuration: Duration(seconds: 1),
                             minWidth: double.infinity,
-                            color: Colors.red,
+                            color: AppColors.red,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
 // elevation: 2,
@@ -187,10 +190,10 @@ class HomeScreen extends GetView<HomeScreenController> {
                                   .spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.mode_edit, color: Colors.white),
+                                Icon(Icons.mode_edit, color: AppColors.white),
                                 Text(
                                   "SIGN UP",
-                                  style: textStyleWidget(color: Colors.white),
+                                  style: textStyleWidget(color: AppColors.white),
                                 ),
                               ],
                             ),
@@ -198,7 +201,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                                 .padded,
                             animationDuration: Duration(seconds: 1),
                             minWidth: double.infinity,
-                            color: Colors.red,
+                            color: AppColors.red,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
 // elevation: 2,
@@ -223,10 +226,10 @@ class HomeScreen extends GetView<HomeScreenController> {
                                   .spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.people, color: Colors.white),
+                                Icon(Icons.people, color: AppColors.white),
                                 Text(
                                   "BUSINESS OWNERS",
-                                  style: textStyleWidget(color: Colors.white),
+                                  style: textStyleWidget(color: AppColors.white),
                                 ),
                               ],
                             ),
@@ -234,14 +237,14 @@ class HomeScreen extends GetView<HomeScreenController> {
                                 .padded,
                             animationDuration: Duration(seconds: 1),
                             minWidth: double.infinity,
-                            color: Colors.red,
+                            color: AppColors.red,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
 
                             visualDensity: VisualDensity
                                 .adaptivePlatformDensity),
                         VerticalSpacing(value: 15),
-                        Icon(Icons.phone, color: Colors.black),
+                        Icon(Icons.phone, color: AppColors.primaryTextColor,),
                       ],
                     ),
                   ),
