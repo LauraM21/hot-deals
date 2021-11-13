@@ -109,7 +109,7 @@ class _ProfileState extends State<Profile> {
     });
   }
 
-  var urlDownload3;
+  var photoUrl;
   var task3;
   Future uploadFile() async {
     if (file == null) return;
@@ -118,7 +118,7 @@ class _ProfileState extends State<Profile> {
     print("${fileName}");
 
 
-    final destination3 = 'GrievanceRequest/$fileName';
+    final destination3 = 'Files/$fileName';
 
     task3 = FirebaseApi3.uploadFile2(destination3, file);
     setState(() {});
@@ -126,9 +126,9 @@ class _ProfileState extends State<Profile> {
     if (task3 == null) return;
 
     final snapshot3 = await task3.whenComplete(() {});
-    urlDownload3 = await snapshot3.ref.getDownloadURL();
+    photoUrl = await snapshot3.ref.getDownloadURL();
 
-    print('Download-Link3: $urlDownload3');
+    print('Download-Link3: $photoUrl');
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -337,8 +337,9 @@ class _ProfileState extends State<Profile> {
                   style: TextStyle(color: AppColors.white, fontSize: 18)),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-Get.find<FireStoreGateway>().updateUser({AppStrings.userName:username},Get.find<LocalDatabase>().getStorageInstance.read(AppStrings.token));
-                  // Navigator.of(context).push(
+Get.find<FireStoreGateway>().updateUser({AppStrings.userName:username},Get.find<FireStoreGateway>().updateUser({AppStrings.photoUrl:photoUrl},Get.find<LocalDatabase>().getStorageInstance.read(AppStrings.token)));
+
+// Navigator.of(context).push(
                   //   MaterialPageRoute(
                   //     builder: (BuildContext context) =>
                   //         BookingSucessfullScreen(),
