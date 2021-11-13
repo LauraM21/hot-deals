@@ -34,6 +34,7 @@ dependencies:
   animated_splash_screen: ^1.1.0
   getxfire: ^0.3.1
   get_storage: ^2.0.3
+  file_picker: ^4.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
