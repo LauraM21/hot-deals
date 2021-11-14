@@ -8,7 +8,6 @@ import 'package:hotdealsgemet/widget/custom_spacing.dart';
 
 ClipRRect SideDrawer(BuildContext context) {
   return ClipRRect(
-    borderRadius: BorderRadius.horizontal(left: Radius.circular(50.0)),
     child: Theme(
       data: Theme.of(context).copyWith(
         canvasColor: AppColors.white,

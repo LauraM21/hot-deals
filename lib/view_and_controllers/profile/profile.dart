@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
@@ -8,7 +9,6 @@ import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
 import 'package:hotdealsgemet/core/app_rss/font_size.dart';
 import 'package:hotdealsgemet/core/services/local_database.dart';
 import 'package:hotdealsgemet/widget/custom_spacing.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 class Profile extends StatefulWidget {
