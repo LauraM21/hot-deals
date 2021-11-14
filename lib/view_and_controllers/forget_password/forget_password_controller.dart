@@ -66,4 +66,10 @@ class ForgetPasswordController extends GetxController
   }
 
 
+  goBack()
+  {
+    Get.back();
+
+  }
+
 }

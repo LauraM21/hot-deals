@@ -1,13 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:getxfire/getxfire.dart';
-import 'package:hotdealsgemet/core/app_rss/app_assets.dart';
-import 'package:hotdealsgemet/core/app_rss/font_size.dart';
-import 'package:hotdealsgemet/core/app_rss/font_weights.dart';
-import 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen_controller.dart';
-import 'package:hotdealsgemet/widget/custom_spacing.dart';
-import 'package:hotdealsgemet/widget/textstyle_widget.dart';
+import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
+
 
 class LoginScreen extends GetView<LoginController> {
   @override

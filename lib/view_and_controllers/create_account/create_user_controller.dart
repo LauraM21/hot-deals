@@ -65,4 +65,11 @@ class CreateUserController extends GetxController {
     update();
   }
 
+
+  goBack()
+  {
+    Get.back();
+
+  }
+
 }
