@@ -10,16 +10,18 @@ class AuthenticationService extends GetxController
   login(String email,String password)
   async{
     print("this funtion called");
-    await GetxFire.signInWithEmailAndPassword(
+    UserCredential? data= await GetxFire.signInWithEmailAndPassword(
       email:email,
       password: password,
       onSuccess: (userCredential) {
         
         return userCredential;
       },
-      onError: (code, message) {},
-    );
+      onError: (code, message) {
 
+      },
+    );
+return data;
   }
 
 

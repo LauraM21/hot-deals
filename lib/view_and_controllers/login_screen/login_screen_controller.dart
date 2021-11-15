@@ -43,7 +43,8 @@ class LoginController extends GetxController
     await buttonControl(false);
     print("loginValidations 1");
 
-    if(date!= null)
+  if(date !=null )
+
       {
         Get.to(HomeScreen());
       }
