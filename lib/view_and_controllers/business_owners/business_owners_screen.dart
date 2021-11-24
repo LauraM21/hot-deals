@@ -1,16 +1,13 @@
-
+import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
-import 'package:hotdealsgemet/view_and_controllers/contact_us/contact_us_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/business_owners/business_owners_controller.dart';
 
-class HomeScreen extends GetView<HomeScreenController> {
+class BusinessOwners extends GetView<BusinessOnwersController> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeScreenController>(builder: (builder) {
-      return WillPopScope(
-        onWillPop: () async {
-          return false;
-        },
-        child: Scaffold(
+    return GetBuilder<BusinessOnwersController>(
+      builder: (controller) {
+        return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: 0,
@@ -24,58 +21,56 @@ class HomeScreen extends GetView<HomeScreenController> {
                   fontSize: FontSize.h1),
             ),
           ),
-          drawer: SideDrawer(context),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Align(
-                    child: Container(
-                      width: 150,
-                      height: 150,
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
+                  VerticalSpacing(),
+                  Container(
+                    width: double.infinity,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(AppAssets.applogo),
-                      )),
+                        image: AssetImage(AppAssets.business),
+                      ),
                     ),
                   ),
-                  VerticalSpacing(value: 10),
-                  Center(
-                    child: Text(
-                        "The app where you don't have to cut out coupons in order to SAVE MONEY!.",
-                        textAlign: TextAlign.center,
-                        style: textStyleWidget(
-                            fontSize: FontSize.smallText,
-                            fontWeight: FontWights.light,
-                            color: AppColors.secondary_text_color)),
-                  ),
                   VerticalSpacing(value: 15),
-                  ButtonWidget(
-                      "Find Deals", Icons.add_to_queue_outlined, () {}),
-                  ButtonWidget("Search Deals", Icons.search, () {}),
-                  ButtonWidget("FAQ", Icons.question_answer, () {}),
-                  ButtonWidget("BUSINESS OWNERS", Icons.login, () {
-
-
-                    Get.to(() => BusinessOwners());
+                  Text(
+                    AppStrings.businessText,
+                    textAlign: TextAlign.left,
+                    style: textStyleWidget(
+                        letterSpacing: 1.4,
+                        fontWeight: FontWeight.normal,
+                        fontSize: FontSize.normalText,
+                        color: AppColors.secondary_text_color),
+                  ),
+                  VerticalSpacing(value: 25),
+                  ButtonWidget("Create a Deal Now", Icons.business, () {
+                        controller.goTODealPage();
                   }),
-                  ButtonWidget("Contact Us", Icons.call, () {Get.to(ContactUs());}),
+                  VerticalSpacing(value: 15),
+
+                  Text(
+                    "Start before 11/20/21 and receive a 50% off discout.no contracts",
+                    textAlign: TextAlign.center,
+                    style: textStyleWidget(
+                        letterSpacing: 1.4,
+                        fontWeight: FontWeight.normal,
+                        fontSize: FontSize.normalText,
+                        color: Colors.red.withOpacity(.5)),
+                  ),
                 ],
               ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }
-
 class ButtonWidget extends StatelessWidget {
   String? name;
   IconData? iconData;
@@ -100,7 +95,7 @@ class ButtonWidget extends StatelessWidget {
               Text(
                 name!,
                 style:
-                    textStyleWidget(color: AppColors.white, letterSpacing: 1.2),
+                textStyleWidget(color: AppColors.white, letterSpacing: 1.2),
               ),
             ],
           ),

@@ -1,16 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:getxfire/getxfire.dart';
-import 'package:hotdealsgemet/core/app_rss/app_assets.dart';
-import 'package:hotdealsgemet/core/app_rss/font_size.dart';
-import 'package:hotdealsgemet/core/app_rss/font_weights.dart';
-import 'package:hotdealsgemet/view_and_controllers/create_account/create_user_controller.dart';
-import 'package:hotdealsgemet/view_and_controllers/forget_password/forget_password_controller.dart';
-import 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen_controller.dart';
-import 'package:hotdealsgemet/widget/custom_spacing.dart';
-import 'package:hotdealsgemet/widget/textstyle_widget.dart';
-import 'package:lottie/lottie.dart';
+import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
+
 
 class ForgetPassword extends GetView<ForgetPasswordController> {
   @override
@@ -37,7 +26,7 @@ class ForgetPassword extends GetView<ForgetPasswordController> {
                       padding: EdgeInsets.only(top: 15),
                       child: IconButton(
                           onPressed: () {
-                            Get.back();
+                            controller.goBack();
                           },
                           icon: Icon(Icons.arrow_back)),
                     ),
@@ -113,10 +102,20 @@ class ForgetPassword extends GetView<ForgetPasswordController> {
                           }
                           if (!controller.emailController.text.isEmail) {
                             return;
-                          }
+                          }else if (controller.emailController.text.trim().isEmpty)
+                            {
+                              FocusScope.of(context).requestFocus(controller.emailFocus);
+                              return ;
+                            }
                           await controller.passwordRequest();
                         },
-                  child: Text(
+                  child: controller.isLoading ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      )) :Text(
                     "Submit",
                     style: textStyleWidget(color: Colors.white),
                   ),
