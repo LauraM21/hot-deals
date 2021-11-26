@@ -1,5 +1,7 @@
 
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
+import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals.dart';
+import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/contact_us/contact_us_screen.dart';
 
 class HomeScreen extends GetView<HomeScreenController> {
@@ -57,7 +59,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                   ),
                   VerticalSpacing(value: 15),
                   ButtonWidget(
-                      "Find Deals", Icons.add_to_queue_outlined, () {}),
+                      "Find Deals", Icons.add_to_queue_outlined, () { Get.to(AllDeals());}),
                   ButtonWidget("Search Deals", Icons.search, () {}),
                   ButtonWidget("FAQ", Icons.question_answer, () {}),
                   ButtonWidget("BUSINESS OWNERS", Icons.login, () {

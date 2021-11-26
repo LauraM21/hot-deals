@@ -5,6 +5,7 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:hotdealsgemet/core/api_calls/auth.dart';
 import 'package:hotdealsgemet/core/api_calls/firestore_gateway.dart';
 import 'package:hotdealsgemet/core/services/local_database.dart';
+import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/business_owners/business_owners_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/contact_us/contact_us_screen_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/create_account/create_user_controller.dart';
@@ -34,6 +35,7 @@ initBindings()
     Get.put<CreateDealController>(CreateDealController());
     Get.put<ContactUsController>(ContactUsController());
     Get.put<BusinessOnwersController>(BusinessOnwersController());
+    Get.put<AllDealsController>(AllDealsController());
 
 
 
