@@ -32,6 +32,5 @@ class FireStoreGateway extends GetxController {
     await GetxFire.firestore.createData(collection: AppStrings.deals, data: userData,id: userData[AppStrings.dealUniqId]);
   }
 
-  getAllDeals() async=>  await GetxFire.firestore.getData(collection: AppStrings.deals,);
 
 }

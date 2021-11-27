@@ -4,15 +4,18 @@
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:hotdealsgemet/core/api_calls/auth.dart';
 import 'package:hotdealsgemet/core/api_calls/firestore_gateway.dart';
+import 'package:hotdealsgemet/core/services/firebase_remote_config.dart';
 import 'package:hotdealsgemet/core/services/local_database.dart';
 import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/business_owners/business_owners_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/contact_us/contact_us_screen_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/create_account/create_user_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/create_deal/create_deal_controller.dart';
+import 'package:hotdealsgemet/view_and_controllers/faq/faq_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/forget_password/forget_password_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/home_screen/home_screen_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen_controller.dart';
+import 'package:hotdealsgemet/view_and_controllers/search_deal/search_screen_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/splash_screen/splash_screen_controller.dart';
 
 initBindings()
@@ -21,6 +24,8 @@ initBindings()
     LocalDatabase().storageInit();
     Get.put<LocalDatabase>(LocalDatabase());
     Get.put<FireStoreGateway>(FireStoreGateway());
+    Get.put<FirebaseRemoteConfig>(FirebaseRemoteConfig());
+
 
 
     Get.put<AuthenticationService>(AuthenticationService());
@@ -36,6 +41,10 @@ initBindings()
     Get.put<ContactUsController>(ContactUsController());
     Get.put<BusinessOnwersController>(BusinessOnwersController());
     Get.put<AllDealsController>(AllDealsController());
+    Get.put<SearchDealController>(SearchDealController());
+    Get.put<FAQController>(FAQController());
+
+
 
 
 
