@@ -109,6 +109,7 @@ class CreateDealController extends GetxController
    dealData["paidData"]="null";
    dealData["paidType"]="null";
    await Get.find<FireStoreGateway>().createDeal(dealData);
+
    // go to payment procedure
 
    updateButtonStatus(false);

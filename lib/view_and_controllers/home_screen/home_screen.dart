@@ -65,12 +65,13 @@ class HomeScreen extends GetView<HomeScreenController> {
                   ButtonWidget("Search Deals", Icons.search, () {
                     Get.to(SearchDeals());
                   }),
+
+                  ButtonWidget("BUSINESS OWNERS", Icons.login, () {
+                    Get.to(() => BusinessOwners());
+                  }),
                   ButtonWidget("FAQ", Icons.question_answer, () {
                     Get.to(() => FAQ());
 
-                  }),
-                  ButtonWidget("BUSINESS OWNERS", Icons.login, () {
-                    Get.to(() => BusinessOwners());
                   }),
                   ButtonWidget("Contact Us", Icons.call, () {
                     Get.to(ContactUs());

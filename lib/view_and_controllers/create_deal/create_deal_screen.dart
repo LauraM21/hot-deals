@@ -480,11 +480,11 @@ class CreateDeal extends GetView<CreateDealController> {
                       padding: const EdgeInsets.only(bottom: 10),
                       child: MaterialButton(
                           height: 40,
-                          onPressed: () {
+                          onPressed: controller.isLoading ? (){} :() {
                             if (controller.isLoading) {
                               return;
                             }
-
+                          print("button called");
                             if (controller.BusinessNameController.text
                                 .trim()
                                 .isEmpty) {
@@ -558,7 +558,8 @@ class CreateDeal extends GetView<CreateDealController> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5)),
                           visualDensity: VisualDensity.adaptivePlatformDensity),
-                    )
+                    ),
+                    VerticalSpacing(value: 20),
                   ],
                 ),
               ),
