@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:getxfire/getxfire.dart' as hide;
 import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
 import 'package:hotdealsgemet/core/app_rss/font_size.dart';
 import 'package:hotdealsgemet/core/app_rss/font_weights.dart';
-//import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
 import 'package:hotdealsgemet/core/services/local_database.dart';
 import 'package:hotdealsgemet/widget/custom_spacing.dart';
 import 'package:hotdealsgemet/widget/textstyle_widget.dart';
@@ -95,23 +94,19 @@ class _DealWidgetState extends State<DealWidget> {
                     fontSize: FontSize.h3,
                     fontWeight: FontWights.semiBold),
               ),
-            /*  StreamBuilder(
+              StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('Fav')
-                    .doc(Get.find<LocalDatabase>()
-                        .getStorageInstance
-                        .read(AppStrings.token))
-                    .collection("Favs")
-                    .snapshots(),
+                    .doc(Get.find<LocalDatabase>().getStorageInstance.read(AppStrings.token)).collection("Favs").snapshots(),
                 builder: (_, snapshot) {
                   if(snapshot.hasData)
                     {
-                      var docs = snapshot.data!.docs;
+                      print(snapshot.runtimeType);
 
                     }
                   return Text("data");
                 },
-              )*/
+              )
             ],
           )
         ],

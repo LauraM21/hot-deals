@@ -47,24 +47,48 @@ class AllDealsController extends GetxController {
 
   addToFavDeal(String id) async {
     //checking if this document is already in database or not
-    DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+    var q = await FirebaseFirestore.instance
         .collection('Fav')
         .doc(instance.read(AppStrings.token))
         .collection("Favs")
-        .doc("id").get();
-    if (documentSnapshot == null) {
+        .get();
+        List<DocumentSnapshot> d=q.docs;
+        print(d.length);
+    if (d.isEmpty || d.length==0) {
+       print("this fav list is empty");
       await FirebaseFirestore.instance
           .collection('Fav')
           .doc(instance.read(AppStrings.token))
           .collection("Favs")
-          .doc("id")
+          .doc(id)
           .set({"id": id});
-    } else {
-      await FirebaseFirestore.instance
-          .collection('Fav')
-          .doc(instance.read(AppStrings.token))
-          .collection("Favs")
-          .doc("id").delete();
+    }
+    else {
+      print("document is not null");
+      List<DocumentSnapshot> dd=d.where((element) => element.id==id).toList();
+      if(dd.isEmpty)
+        {
+          print("adding to fav list");
+          await FirebaseFirestore.instance
+              .collection('Fav')
+              .doc(instance.read(AppStrings.token))
+              .collection("Favs")
+              .doc(id)
+              .set({"id": id});
+
+        }else
+          {
+            //delete
+            print("already this deals added in fav list so deleting");
+            await FirebaseFirestore.instance
+                .collection('Fav')
+                .doc(instance.read(AppStrings.token))
+                .collection("Favs")
+                .doc(id).delete();
+
+          }
+
+
     }
   }
 
@@ -72,7 +96,6 @@ class AllDealsController extends GetxController {
   favListen(value) {
     print("favListenCalled");
     controller.add(value);
-    print(controller.stream.length);
     update();
   }
 }
