@@ -39,7 +39,12 @@ class AllDeals extends GetView<AllDealsController> {
                             itemCount: controller.listOfDeals.length,
                             itemBuilder: (_, index) {
 
-                              return DealWidget(controller.listOfDeals[index]);
+                              return InkWell(
+                                  onTap: (){
+                                    controller.addToFavDeal(controller.listOfDeals[index].id);
+                                  },
+                                  child: DealWidget(controller.listOfDeals[index]));
+
                             })
                       ],
                     ),
