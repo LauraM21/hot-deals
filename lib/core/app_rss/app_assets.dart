@@ -5,6 +5,8 @@ class AppAssets
   static String applogo="assets/images/image.png";
   static String house_02="assets/images/house_02.jpg";
   static String house_03="assets/images/house_03.jpg";
+  static String business="assets/images/business.jpg";
+  static String search="assets/images/search.png";
 
 
 

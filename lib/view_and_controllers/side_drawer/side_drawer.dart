@@ -1,12 +1,16 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors, file_names;, file_names
 import 'package:flutter/material.dart';
+import 'package:hotdealsgemet/core/app_rss/app_colors.dart';
+import 'package:hotdealsgemet/core/app_rss/font_size.dart';
+import 'package:hotdealsgemet/view_and_controllers/profile/profile.dart';
+
+import 'package:hotdealsgemet/widget/custom_spacing.dart';
 
 ClipRRect SideDrawer(BuildContext context) {
   return ClipRRect(
-    borderRadius: BorderRadius.horizontal(left: Radius.circular(50.0)),
     child: Theme(
       data: Theme.of(context).copyWith(
-        canvasColor: Colors.black,
+        canvasColor: AppColors.white,
       ),
       child: Drawer(
         child: Padding(
@@ -14,27 +18,35 @@ ClipRRect SideDrawer(BuildContext context) {
           child: ListView(
             children: [
               ListTile(
-                  title: Text(
-                    'Home',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.account_circle,
+                        color:AppColors.primaryTextColor,
+                        size: 25,
+
+                      ),
+                      HorizontalSpacing(value: 15),
+                      Text(
+                        'Profile',
+                        style: TextStyle(
+                          color:AppColors.primaryTextColor,
+                          fontSize: FontSize.h2,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
                   ),
-                  subtitle: Text(
-                    'Lorem ipsum dolor sit amet',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+
                   trailing: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color:AppColors.primaryTextColor,
                   ),
                   onTap: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //       builder: (BuildContext context) => AppBars()),
-                    // );
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => Profile()),
+                    );
                   }),
               Divider(
                 thickness: 3,
@@ -43,18 +55,13 @@ ClipRRect SideDrawer(BuildContext context) {
                   title: Text(
                     'Visit',
                     style: TextStyle(
-                      color: Colors.white,
+                      color:AppColors.primaryTextColor,
                     ),
                   ),
-                  subtitle: Text(
-                    'Lorem ipsum dolor sit amet',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+
                   trailing: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: AppColors.primaryTextColor,
                   ),
                   onTap: () {
                     // Navigator.of(context).push(
@@ -69,18 +76,13 @@ ClipRRect SideDrawer(BuildContext context) {
                   title: Text(
                     'Exhibit',
                     style: TextStyle(
-                      color: Colors.white,
+                      color:AppColors.primaryTextColor,
                     ),
                   ),
-                  subtitle: Text(
-                    'Lorem ipsum dolor sit amet',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+
                   trailing: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: AppColors.primaryTextColor,
                   ),
                   onTap: () {
                     // Navigator.of(context).push(
@@ -95,18 +97,13 @@ ClipRRect SideDrawer(BuildContext context) {
                   title: Text(
                     'Facilities',
                     style: TextStyle(
-                      color: Colors.white,
+                      color:AppColors.primaryTextColor,
                     ),
                   ),
-                  subtitle: Text(
-                    'Lorem ipsum dolor sit amet',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+
                   trailing: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: AppColors.primaryTextColor,
                   ),
                   onTap: () {
                     // Navigator.of(context).push(
@@ -121,18 +118,13 @@ ClipRRect SideDrawer(BuildContext context) {
                   title: Text(
                     'Services',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.primaryTextColor,
                     ),
                   ),
-                  subtitle: Text(
-                    'Lorem ipsum dolor sit amet',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+
                   trailing: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: AppColors.primaryTextColor,
                   ),
                   onTap: () {
                     // Navigator.of(context).push(
@@ -147,18 +139,13 @@ ClipRRect SideDrawer(BuildContext context) {
                   title: Text(
                     'Profile',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.primaryTextColor,
                     ),
                   ),
-                  subtitle: Text(
-                    'Lorem ipsum dolor sit amet',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+
                   trailing: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color:AppColors.primaryTextColor,
                   ),
                   onTap: () {}),
               Divider(
@@ -186,7 +173,7 @@ ClipRRect SideDrawer(BuildContext context) {
                       child: Text(
                         "FeedBack",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.primaryTextColor,
                         ),
                       ),
                       onPressed: () {
@@ -195,43 +182,7 @@ ClipRRect SideDrawer(BuildContext context) {
                         //       builder: (BuildContext context) => Feed()),
                         // );
                       }),
-                  SizedBox(height: 10),
-                  TextButton(
-                      child: Text(
-                        "FAQs",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //       builder: (BuildContext context) => FAQ()),
-                        // );
-                      }),
-                  SizedBox(height: 10),
-                  TextButton(
-                      child: Text(
-                        "Blog",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {}),
-                  SizedBox(height: 10),
-                  TextButton(
-                      child: Text(
-                        "About Us",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //       builder: (BuildContext context) => About()),
-                        // );
-                      }),
+
                 ],
               )
             ],
