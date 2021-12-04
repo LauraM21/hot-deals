@@ -1,8 +1,11 @@
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
+import 'package:hotdealsgemet/core/services/local_database.dart';
 import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals.dart';
 import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/contact_us/contact_us_screen.dart';
 import 'package:hotdealsgemet/view_and_controllers/faq/faq_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen.dart';
 import 'package:hotdealsgemet/view_and_controllers/search_deal/search_screen.dart';
 
 class HomeScreen extends GetView<HomeScreenController> {

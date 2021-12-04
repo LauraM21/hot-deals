@@ -13,6 +13,7 @@ class LocalDatabase extends GetxController
   {
     print("storageInit funtion called");
     _storage=GetStorage();
+    update();
   }
 
   get getStorageInstance =>_storage;
@@ -22,6 +23,7 @@ class LocalDatabase extends GetxController
     print("store token funtion called");
 
     _storage.write(AppStrings.token,value);
+    update();
   }
 
   get getToken
@@ -29,6 +31,13 @@ class LocalDatabase extends GetxController
     print("getToken funtion called");
 
     return _storage.read(AppStrings.token);
+
+  }
+
+  clearDB()
+  async{
+    await _storage.erase();
+    update();
   }
 
 }

@@ -7,6 +7,7 @@ class AppAssets
   static String house_03="assets/images/house_03.jpg";
   static String business="assets/images/business.jpg";
   static String search="assets/images/search.png";
+  static String powerOff="assets/images/power-off.png";
 
 
 
