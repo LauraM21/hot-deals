@@ -20,4 +20,13 @@ class AppAssets
 
   static String fav_icon="assets/icons/fav.png";
 
+
+
+  //images
+  static String noprofilepicture="assets/images/noprofilepicture.png";
+
+  // icons
+
+  static String home_icon="assets/icons/home.png";
+  static String user_profile_icon="assets/icons/user.png";
 }

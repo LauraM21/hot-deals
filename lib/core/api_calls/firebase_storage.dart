@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:get/get.dart';
+import 'package:hotdealsgemet/core/services/local_database.dart';
 
 
 class FirebaseStorageService
@@ -32,4 +34,13 @@ class FirebaseStorageService
     return d;
   }
 
+
+  static getAllFavDeals()
+  async{
+
+    QuerySnapshot q= await FirebaseFirestore.instance
+        .collection('Fav').doc(Get.find<LocalDatabase>().getToken).collection("Favs").get();
+    List<DocumentSnapshot> d=q.docs;
+    return d;
+  }
 }

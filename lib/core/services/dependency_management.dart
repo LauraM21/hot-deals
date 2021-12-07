@@ -12,10 +12,13 @@ import 'package:hotdealsgemet/view_and_controllers/contact_us/contact_us_screen_
 import 'package:hotdealsgemet/view_and_controllers/create_account/create_user_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/create_deal/create_deal_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/faq/faq_controller.dart';
+import 'package:hotdealsgemet/view_and_controllers/fav_deals/fav_deals_screen_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/forget_password/forget_password_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/home_screen/home_screen_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen_controller.dart';
+
 import 'package:hotdealsgemet/view_and_controllers/search_deal/search_screen_controller.dart';
+import 'package:hotdealsgemet/view_and_controllers/settings/settings_screen_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/splash_screen/splash_screen_controller.dart';
 
 initBindings()
@@ -30,7 +33,7 @@ initBindings()
 
     Get.put<AuthenticationService>(AuthenticationService());
 
-    Get.find<LocalDatabase>().storageInit();;
+    Get.find<LocalDatabase>().storageInit();
     Get.put<SplashScreenController>(SplashScreenController());
 
        Get.put<LoginController>(LoginController());
@@ -43,6 +46,12 @@ initBindings()
     Get.put<AllDealsController>(AllDealsController());
     Get.put<SearchDealController>(SearchDealController());
     Get.put<FAQController>(FAQController());
+
+    Get.put<SettingsController>(SettingsController());
+
+
+    Get.put<FavDealsController>(FavDealsController());
+
 
 
 

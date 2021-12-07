@@ -71,6 +71,8 @@ class AuthenticationService extends GetxController
       return AppStrings.failure;
       print("error throwd");
     }
+
+
   }
 
 

@@ -33,10 +33,13 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
 
           primarySwatch: Colors.blue,
-          pageTransitionsTheme:const PageTransitionsTheme(builders: {
-            TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
-            TargetPlatform.android: ZoomPageTransitionsBuilder(),
-          })),
+          // pageTransitionsTheme:const PageTransitionsTheme(builders: {
+          //   TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
+          //   TargetPlatform.android: ZoomPageTransitionsBuilder(),
+          // }),
+
+
+      ),
 
       home:  SplashScreenn(),
     );

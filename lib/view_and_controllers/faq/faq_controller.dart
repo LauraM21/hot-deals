@@ -44,7 +44,7 @@ class FAQController extends GetxController {
     },
     {
       "q": "Can I change my ad offer mid-month if I decide I need to?",
-      "a": "Yes! The great thing about our advertising is that you can change it daily, weekly, monthly, or never change your ad at all. It’s up to you. Just go on the app and click on your business profile to “change your ad”. This is great for businesses that want one specific deal during the week and a different one during the weekends. This is all up to you."
+      "a": "Yes! The great thing about our advertising is that you can change it daily, weekly, monthly, or never change your ad at all. It’s up to you. Just go on the app and click on your business settings to “change your ad”. This is great for businesses that want one specific deal during the week and a different one during the weekends. This is all up to you."
     },
     {
       "q": "Do I have to offer “a deal” or can I just advertise my business? ",
