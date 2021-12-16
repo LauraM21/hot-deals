@@ -11,7 +11,9 @@ import 'package:hotdealsgemet/view_and_controllers/search_deal/search_screen.dar
 class HomeScreen extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeScreenController>(builder: (builder) {
+    return GetBuilder<HomeScreenController>(
+        init: HomeScreenController(),
+        builder: (builder) {
       return WillPopScope(
         onWillPop: () async {
           return false;

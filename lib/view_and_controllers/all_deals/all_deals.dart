@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:getxfire/getxfire.dart';
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
 import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals_controller.dart';
 import 'package:hotdealsgemet/widget/deal_widget.dart';

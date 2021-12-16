@@ -41,7 +41,7 @@ export 'package:hotdealsgemet/view_and_controllers/forget_password/forget_passwo
 export 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen_controller.dart';
 export 'package:hotdealsgemet/widget/custom_spacing.dart';
 export 'package:hotdealsgemet/widget/textstyle_widget.dart';
-export 'package:lottie/lottie.dart';
+
 
 
 

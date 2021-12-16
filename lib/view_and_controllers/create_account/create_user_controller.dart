@@ -1,6 +1,7 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getxfire/getxfire.dart';
 import 'package:hotdealsgemet/core/api_calls/auth.dart';
 import 'package:hotdealsgemet/core/api_calls/firestore_gateway.dart';
 import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
@@ -21,7 +22,7 @@ class CreateUserController extends GetxController {
 
   createAccount()async {
     await buttonControl(true);
-    UserCredential userCredential= await Get.find<AuthenticationService>()
+    var userCredential= await Get.find<AuthenticationService>()
         .createUserAccount(email_controller.text, password_controller.text);
 
    if(userCredential!= null)

@@ -19,19 +19,26 @@ class SettingsController extends GetxController
   Map<String,dynamic> json={};
 
 
-
+  late final instance;
   SettingsController()
   {
+  instance=db.getStorageInstance;
+if(instance.read(AppStrings.token)==null || instance.read(AppStrings.token)=="")
+  {
 
+  }else
+    {
+      getUserProfile();
+    }
 
-    getUserProfile();
   }
 
 
 
   getUserProfile()
   async{
-    final instance=db.getStorageInstance;
+
+    print("the  storing token is ${instance.read(AppStrings.token)}");
     DocumentSnapshot doc = await FirebaseFirestore.instance
         .collection('USERS')
         .doc(instance.read(AppStrings.token))

@@ -32,4 +32,6 @@ class FavDealsController extends GetxController {
     isLoading = value;
     update();
   }
+
+
 }

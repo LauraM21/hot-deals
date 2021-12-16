@@ -1,9 +1,9 @@
-import 'dart:async';
 
-import 'package:getxfire/getxfire.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:hotdealsgemet/core/api_calls/firebase_storage.dart';
 import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
-import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
 import 'package:hotdealsgemet/core/services/local_database.dart';
 
 class AllDealsController extends GetxController {
@@ -12,7 +12,7 @@ class AllDealsController extends GetxController {
 
   late final db = Get.find<LocalDatabase>();
   late final instance;
-  StreamController controller = StreamController();
+
   late Stream stream;
 
   @override
@@ -21,9 +21,6 @@ class AllDealsController extends GetxController {
 
     loadingController(true);
 
-    FirebaseFirestore.instance.collection('Fav').doc(
-        instance.read(AppStrings.token)).collection("Favs").snapshots().listen(
-        favListen);
 
 
     listOfDeals = await FirebaseStorageService.getAllDeals();
@@ -93,10 +90,6 @@ class AllDealsController extends GetxController {
   }
 
 
-  favListen(value) {
-    print("favListenCalled");
-    controller.add(value);
-    update();
-  }
+
 }
 

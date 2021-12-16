@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:get/get_instance/src/extension_instance.dart';
@@ -85,6 +86,19 @@ class CreateDealController extends GetxController
    update();
   }
 
+
+  data()
+async{
+  print("called offerings funtion");
+
+  Offerings offerings = await Purchases.getOfferings();
+  if (offerings.current != null) {
+    print("all data");
+  }
+  print(offerings.all.length);
+
+
+}
 
 
   createDeal(File file)

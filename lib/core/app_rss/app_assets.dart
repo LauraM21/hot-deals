@@ -29,4 +29,5 @@ class AppAssets
 
   static String home_icon="assets/icons/home.png";
   static String user_profile_icon="assets/icons/user.png";
+  static String gallaru_camera_icon="assets/icons/gallaru_camera_icon.png";
 }

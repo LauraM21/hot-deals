@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
 
 import 'create_deal_controller.dart';
@@ -29,6 +31,13 @@ class CreateDeal extends GetView<CreateDealController> {
                 child: Column(
                   children: [
                     VerticalSpacing(value: 15),
+                    Text(
+                      "Fill all the forms to create a Deal",
+                      textAlign: TextAlign.center,
+                      style: textStyleWidget(
+                          color: Colors.black, fontSize: FontSize.normalText),
+                    ),
+                    VerticalSpacing(value: 15),
                     InkWell(
                       onTap: () {
                         showCupertinoModalPopup(
@@ -42,7 +51,7 @@ class CreateDeal extends GetView<CreateDealController> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         CupertinoIcons.camera,
                                         color: CupertinoColors.systemBlue,
                                       ),
@@ -58,7 +67,7 @@ class CreateDeal extends GetView<CreateDealController> {
                                 CupertinoActionSheetAction(
                                   child: Row(
                                     children: [
-                                      Icon(
+                                    const   Icon(
                                         CupertinoIcons.collections,
                                         color: CupertinoColors.systemBlue,
                                       ),
@@ -84,18 +93,23 @@ class CreateDeal extends GetView<CreateDealController> {
                           width: double.infinity,
                           height: 250,
                           decoration: BoxDecoration(
-                              color: Colors.yellow,
-                              borderRadius: BorderRadius.circular(10)),
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                  color: Colors.black.withOpacity(.2),
+                                  width: .4)),
                           alignment: Alignment.center,
                           child: controller.isImageSelected
                               ? Image.file(controller.iFile)
-                              : Text("Select Image")),
+                              : Image(
+                                  image:
+                                      AssetImage(AppAssets.gallaru_camera_icon),
+                                )),
                     ),
                     VerticalSpacing(value: 15),
                     Container(
                       height: 45,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(233, 230, 230, 100),
+                        color:const  Color.fromRGBO(233, 230, 230, 100),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: TextField(
@@ -105,12 +119,15 @@ class CreateDeal extends GetView<CreateDealController> {
                         style: textStyleWidget(
                             fontSize: FontSize.normalText,
                             fontWeight: FontWights.normal,
-                            color: Colors.black.withOpacity(.5),
+                            color: Colors.black.withOpacity(.7),
                             letterSpacing: 1.2),
+
+                        keyboardType: TextInputType.name,
+
                         decoration: InputDecoration(
                           hintText: "busniness name",
                           hintStyle: textStyleWidget(
-                              fontSize: FontSize.smallText,
+                              fontSize: FontSize.subText_01,
                               fontWeight: FontWights.light,
                               color: Colors.black.withOpacity(.5),
                               letterSpacing: 1.2),
@@ -129,6 +146,9 @@ class CreateDeal extends GetView<CreateDealController> {
                                 width: .4),
                           ),
                         ),
+                        inputFormatters: [
+                        LengthLimitingTextInputFormatter(50),
+                      ],
                         onSubmitted: (value) {
                           if (controller.BusinessNameController.text
                               .trim()
@@ -155,6 +175,11 @@ class CreateDeal extends GetView<CreateDealController> {
                             fontWeight: FontWights.normal,
                             color: Colors.black.withOpacity(.5),
                             letterSpacing: 1.2),
+                        autocorrect: true,
+                        keyboardType: TextInputType.emailAddress,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(50),
+                        ],
                         decoration: InputDecoration(
                           hintText: "busniness email",
                           hintStyle: textStyleWidget(
@@ -203,6 +228,7 @@ class CreateDeal extends GetView<CreateDealController> {
                             fontWeight: FontWights.normal,
                             color: Colors.black.withOpacity(.5),
                             letterSpacing: 1.2),
+                        keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                           hintText: "title",
                           hintStyle: textStyleWidget(
@@ -225,6 +251,9 @@ class CreateDeal extends GetView<CreateDealController> {
                                 width: .4),
                           ),
                         ),
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(50),
+                        ],
                         onSubmitted: (value) {
                           if (controller.BusinessNameController.text
                               .trim()
@@ -251,6 +280,10 @@ class CreateDeal extends GetView<CreateDealController> {
                             fontWeight: FontWights.normal,
                             color: Colors.black.withOpacity(.5),
                             letterSpacing: 1.2),
+                        keyboardType: TextInputType.streetAddress,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(100),
+                        ],
                         decoration: InputDecoration(
                           hintText: "description",
                           hintStyle: textStyleWidget(
@@ -299,6 +332,11 @@ class CreateDeal extends GetView<CreateDealController> {
                             fontWeight: FontWights.normal,
                             color: Colors.black.withOpacity(.5),
                             letterSpacing: 1.2),
+                        keyboardType: TextInputType.text,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(8),
+                        ],
+
                         decoration: InputDecoration(
                           hintText: "coupon code",
                           hintStyle: textStyleWidget(
@@ -347,6 +385,10 @@ class CreateDeal extends GetView<CreateDealController> {
                             fontWeight: FontWights.normal,
                             color: Colors.black.withOpacity(.5),
                             letterSpacing: 1.2),
+                        keyboardType: TextInputType.name,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(50),
+                        ],
                         decoration: InputDecoration(
                           hintText: "shop name",
                           hintStyle: textStyleWidget(
@@ -354,6 +396,7 @@ class CreateDeal extends GetView<CreateDealController> {
                               fontWeight: FontWights.light,
                               color: Colors.black.withOpacity(.5),
                               letterSpacing: 1.2),
+
                           contentPadding: EdgeInsets.only(bottom: 5, left: 5),
                           border: InputBorder.none,
                           enabledBorder: OutlineInputBorder(
@@ -395,6 +438,11 @@ class CreateDeal extends GetView<CreateDealController> {
                             fontWeight: FontWights.normal,
                             color: Colors.black.withOpacity(.5),
                             letterSpacing: 1.2),
+                          keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(10),
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                        ],
                         decoration: InputDecoration(
                           hintText: "shop phone number",
                           hintStyle: textStyleWidget(
@@ -443,6 +491,11 @@ class CreateDeal extends GetView<CreateDealController> {
                             fontWeight: FontWights.normal,
                             color: Colors.black.withOpacity(.5),
                             letterSpacing: 1.2),
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(70),
+
+                        ],
+                        keyboardType: TextInputType.streetAddress,
                         decoration: InputDecoration(
                           hintText: "shop address",
                           hintStyle: textStyleWidget(
@@ -480,59 +533,79 @@ class CreateDeal extends GetView<CreateDealController> {
                       padding: const EdgeInsets.only(bottom: 10),
                       child: MaterialButton(
                           height: 40,
-                          onPressed: controller.isLoading ? (){} :() {
-                            if (controller.isLoading) {
-                              return;
-                            }
-                          print("button called");
-                            if (controller.BusinessNameController.text
-                                .trim()
-                                .isEmpty) {
-                              return;
-                            }
-                            if (controller.BusinessEmailAddressController.text
-                                .trim()
-                                .isEmpty) {
-                              return;
-                            }
-                            if (controller.descriptionController.text
-                                .trim()
-                                .isEmpty) {
-                              return;
-                            }
-                            if (controller.subDescriptionController.text
-                                .trim()
-                                .isEmpty) {
-                              return;
-                            }
+                          onPressed: controller.isLoading
+                              ? () {}
+                              : () {
+                            controller.data();
 
-                            if (controller.shopCodeController.text
-                                .trim()
-                                .isEmpty) {
-                              return;
-                            }
-                            if (controller.shopNameController.text
-                                .trim()
-                                .isEmpty) {
-                              return;
-                            }
-                            if (controller.shopPhoneNumberController.text
-                                .trim()
-                                .isEmpty) {
-                              return;
-                            }
-                            if (controller.shopAddressController.text
-                                .trim()
-                                .isEmpty) {
-                              return;
-                            }
+                                  if (controller.isLoading) {
+                                    return;
+                                  }
+                                  print("button called");
+                                  if (controller.BusinessNameController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.BusinessNameFocus);
+                                    return;
+                                  }
+                                  if (controller
+                                      .BusinessEmailAddressController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
+                                    return;
+                                  }
+                                  if(GetUtils.isEmail(controller.BusinessEmailAddressController.text))
+                                    {
+                                      FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
+                                      return;
+                                    }
+                                  if (controller.descriptionController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.descriptionFocus);
+                                    return;
+                                  }
+                                  if (controller.subDescriptionController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.subDescriptionFocus);
+                                    return;
+                                  }
 
-                            controller.createDeal(controller.iFile);
-                          },
+                                  if (controller.shopCodeController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.shopCodeFocus);
+                                    return;
+                                  }
+                                  if (controller.shopNameController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.shopNameFocus);
+                                    return;
+                                  }
+                                  if (controller.shopPhoneNumberController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.shopPhoneNumberFocus);
+                                    return;
+                                  }
+                                  if (controller.shopAddressController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.shopAddressFocus);
+                                    return;
+                                  }
+
+                                     controller.createDeal(controller.iFile);
+                                },
                           splashColor: Colors.orange,
                           child: controller.isLoading
                               ? SizedBox(
-                                  child: CircularProgressIndicator(color:Colors.white,),
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
                                   width: 15,
                                   height: 15,
                                 )
