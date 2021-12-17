@@ -1,16 +1,18 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:getxfire/getxfire.dart';
+
 import 'package:hotdealsgemet/core/api_calls/auth.dart';
 import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
 import 'package:hotdealsgemet/core/services/local_database.dart';
 import 'package:hotdealsgemet/view_and_controllers/create_account/create_user_screen.dart';
 import 'package:hotdealsgemet/view_and_controllers/forget_password/forget_password_screen.dart';
 import 'package:hotdealsgemet/view_and_controllers/home_screen/home_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/settings/settings_screen_controller.dart';
 
 class LoginController extends GetxController
 {
-
 
   TextEditingController email_controller=TextEditingController();
   TextEditingController password_controller=TextEditingController();
@@ -46,15 +48,20 @@ class LoginController extends GetxController
  async {
     print("loginValidations called");
   await buttonControl(true);
-    UserCredential? date=   await auth.login(email_controller.text, password_controller.text);
+    // UserCredential? date=   await auth.login(email_controller.text, password_controller.text);
+  var date=  await auth.login(email_controller.text, password_controller.text);
     await buttonControl(false);
     print("loginValidations 1");
 
-    if(date!= null)
+  if(date !=null )
+
       {
         print("heloow world");
         final instance=db.getStorageInstance;
         instance.write(AppStrings.token,date.user!.uid);
+
+      await Get.find<SettingsController>().getUserProfile();
+
         Get.to(HomeScreen());
       }
 

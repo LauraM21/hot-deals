@@ -2,9 +2,15 @@ import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
 
 
 class LoginScreen extends GetView<LoginController> {
+
+
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LoginController>(builder: (builder) {
+    return GetBuilder<LoginController>(
+
+
+        builder: (builder) {
+
       return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -253,4 +259,6 @@ class LoginScreen extends GetView<LoginController> {
       );
     });
   }
+
+
 }

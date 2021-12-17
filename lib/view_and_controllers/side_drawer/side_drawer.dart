@@ -1,8 +1,19 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors, file_names;, file_names
 import 'package:flutter/material.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:hotdealsgemet/core/app_rss/app_assets.dart';
 import 'package:hotdealsgemet/core/app_rss/app_colors.dart';
 import 'package:hotdealsgemet/core/app_rss/font_size.dart';
-import 'package:hotdealsgemet/view_and_controllers/profile/profile.dart';
+import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
+import 'package:hotdealsgemet/core/services/local_database.dart';
+
+import 'package:hotdealsgemet/view_and_controllers/contact_us/contact_us_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/faq/faq_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/fav_deals/fav_deals_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/settings/settings.dart';
+import 'package:hotdealsgemet/view_and_controllers/settings/settings_screen_controller.dart';
+import 'package:hotdealsgemet/view_and_controllers/tc_pp/about_us_screen.dart';
 
 import 'package:hotdealsgemet/widget/custom_spacing.dart';
 
@@ -13,180 +24,458 @@ ClipRRect SideDrawer(BuildContext context) {
         canvasColor: AppColors.white,
       ),
       child: Drawer(
-        child: Padding(
-          padding: EdgeInsets.all(40),
-          child: ListView(
-            children: [
-              ListTile(
-                  title: Row(
-                    children: [
-                      Icon(
-                        Icons.account_circle,
-                        color:AppColors.primaryTextColor,
-                        size: 25,
+        child: SafeArea(
+          child: Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    VerticalSpacing(value: 20),
+                    Container(
 
-                      ),
-                      HorizontalSpacing(value: 15),
-                      Text(
-                        'Profile',
-                        style: TextStyle(
-                          color:AppColors.primaryTextColor,
-                          fontSize: FontSize.h2,
-                          fontWeight: FontWeight.w500,
+                      alignment: Alignment.center,
+                      child: Get.find<LocalDatabase>().getToken == null ||
+                              Get.find<LocalDatabase>().getToken == ""
+                          ? Container(
+
+
+                          alignment: Alignment.center,
+                            height: 150,
+                            child: MaterialButton(
+                                onPressed: () {
+                                  // login funtion
+                                },
+                                color: Colors.red,
+                                child: Text(
+                                  "Login",
+                                  style: textStyleWidget(color: Colors.white),
+                                )),
+                          )
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                VerticalSpacing(value: 10),
+                                CircleAvatar(
+
+                                  backgroundImage:  NetworkImage(
+                                        Get.find<SettingsController>()
+                                            .json["photoUrl"]!),
+                                  radius: 40,
+                                  ),
+
+                                VerticalSpacing(value: 10),
+                                Text(Get.find<SettingsController>()
+                                    .json["userName"]),
+                                VerticalSpacing(),
+                                Text(Get.find<SettingsController>()
+                                    .json["eMail"],style: textStyleWidget(color: Colors.black.withOpacity(.5)),),
+                                VerticalSpacing(value: 10),
+                              ],
+                            ),
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Colors.black.withOpacity(.2))),
+                    ),
+                    VerticalSpacing(value: 15),
+                    InkWell(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black12)),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 20,
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image(
+                                image: AssetImage(AppAssets.home_icon),
+                                fit: BoxFit.cover,
+                                color: Colors.black,
+                              ),
+                            ),
+                            HorizontalSpacing(value: 10),
+                            Text(
+                              "Home",
+                              style: textStyleWidget(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  color: Colors.black),
+                            )
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color:AppColors.primaryTextColor,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => Profile()),
-                    );
-                  }),
-              Divider(
-                thickness: 3,
-              ),
-              ListTile(
-                  title: Text(
-                    'Visit',
-                    style: TextStyle(
-                      color:AppColors.primaryTextColor,
                     ),
-                  ),
+                    VerticalSpacing(value: 15),
+                    Get.find<LocalDatabase>().getToken == null ||
+                            Get.find<LocalDatabase>().getToken == ""
+                        ? Container()
+                        : InkWell(
+                            onTap: () {
+                              Get.back();
+                              Get.to(Settings());
+                            },
+                            child: Container(
+                              height: 50,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(color: Colors.black12)),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 30,
+                                    height: 20,
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Image(
+                                      image: AssetImage(
+                                        AppAssets.user_profile_icon,
+                                      ),
+                                      fit: BoxFit.cover,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  HorizontalSpacing(value: 10),
+                                  Text(
+                                    "Profile",
+                                    style: textStyleWidget(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 14,
+                                        color: Colors.black),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                    VerticalSpacing(value: 15),
+                    Get.find<LocalDatabase>().getToken == null ||
+                        Get.find<LocalDatabase>().getToken == ""? Container() :     InkWell(
+                      onTap: () {
 
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.primaryTextColor,
-                  ),
-                  onTap: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //       builder: (BuildContext context) => AppBars()),
-                    // );
-                  }),
-              Divider(
-                thickness: 3,
-              ),
-              ListTile(
-                  title: Text(
-                    'Exhibit',
-                    style: TextStyle(
-                      color:AppColors.primaryTextColor,
-                    ),
-                  ),
-
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.primaryTextColor,
-                  ),
-                  onTap: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //       builder: (BuildContext context) => AppBars()),
-                    // );
-                  }),
-              Divider(
-                thickness: 3,
-              ),
-              ListTile(
-                  title: Text(
-                    'Facilities',
-                    style: TextStyle(
-                      color:AppColors.primaryTextColor,
-                    ),
-                  ),
-
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.primaryTextColor,
-                  ),
-                  onTap: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //       builder: (BuildContext context) => AppBars()),
-                    // );
-                  }),
-              Divider(
-                thickness: 3,
-              ),
-              ListTile(
-                  title: Text(
-                    'Services',
-                    style: TextStyle(
-                      color: AppColors.primaryTextColor,
-                    ),
-                  ),
-
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: AppColors.primaryTextColor,
-                  ),
-                  onTap: () {
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //       builder: (BuildContext context) => AppBars()),
-                    // );
-                  }),
-              Divider(
-                thickness: 3,
-              ),
-              ListTile(
-                  title: Text(
-                    'Profile',
-                    style: TextStyle(
-                      color: AppColors.primaryTextColor,
-                    ),
-                  ),
-
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color:AppColors.primaryTextColor,
-                  ),
-                  onTap: () {}),
-              Divider(
-                thickness: 3,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  // Text("Contact Us"),
-                  TextButton(
-                      child: Text(
-                        "Contact Us",
-                        style: TextStyle(
-                          color: Colors.white,
+                        Get.to(FavDeals());
+                      },
+                      child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black12)),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 20,
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image(
+                                image: AssetImage(
+                                  AppAssets.powerOff,
+                                ),
+                                fit: BoxFit.cover,
+                                color: Colors.black,
+                              ),
+                            ),
+                            HorizontalSpacing(value: 10),
+                            Text(
+                              "Saved Deals",
+                              style: textStyleWidget(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  color: Colors.black),
+                            )
+                          ],
                         ),
                       ),
-                      onPressed: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //       builder: (BuildContext context) => ContactUs()),
-                        // );
-                      }),
-                  SizedBox(height: 10),
-                  TextButton(
-                      child: Text(
-                        "FeedBack",
-                        style: TextStyle(
-                          color: AppColors.primaryTextColor,
+                    ),
+                    VerticalSpacing(value: 15),
+                    InkWell(
+                      onTap: () {
+
+                        Get.to(BusinessOwners());
+
+                      },
+                      child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black12)),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 20,
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image(
+                                image: AssetImage(
+                                  AppAssets.powerOff,
+                                ),
+                                fit: BoxFit.cover,
+                                color: Colors.black,
+                              ),
+                            ),
+                            HorizontalSpacing(value: 10),
+                            Text(
+                              "Advertise with us",
+                              style: textStyleWidget(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  color: Colors.black),
+                            )
+                          ],
                         ),
                       ),
-                      onPressed: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //       builder: (BuildContext context) => Feed()),
-                        // );
-                      }),
+                    ),
+                 /*   VerticalSpacing(value: 15),
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black12)),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 20,
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image(
+                                image: AssetImage(
+                                  AppAssets.powerOff,
+                                ),
+                                fit: BoxFit.cover,
+                                color: Colors.black,
+                              ),
+                            ),
+                            HorizontalSpacing(value: 10),
+                            Text(
+                              "Biz Dictonary",
+                              style: textStyleWidget(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),*/
+                    VerticalSpacing(value: 15),
+                    InkWell(
+                      onTap: () {
 
-                ],
-              )
-            ],
-          ),
+                        Get.to(FAQ());
+
+                      },
+                      child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black12)),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 20,
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image(
+                                image: AssetImage(
+                                  AppAssets.powerOff,
+                                ),
+                                fit: BoxFit.cover,
+                                color: Colors.black,
+                              ),
+                            ),
+                            HorizontalSpacing(value: 10),
+                            Text(
+                              "FAQ",
+                              style: textStyleWidget(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    VerticalSpacing(value: 15),
+                    InkWell(
+                      onTap: () {
+                        Get.to(PPAndTC(type: "PP",));
+
+                      },
+                      child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black12)),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 20,
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image(
+                                image: AssetImage(
+                                  AppAssets.powerOff,
+                                ),
+                                fit: BoxFit.cover,
+                                color: Colors.black,
+                              ),
+                            ),
+                            HorizontalSpacing(value: 10),
+                            Text(
+                              "Privacy Policy",
+                              style: textStyleWidget(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    VerticalSpacing(value: 15),
+                    InkWell(
+                      onTap: () {
+                        Get.to(PPAndTC(type: "TC",));
+
+                      },
+                      child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black12)),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 20,
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image(
+                                image: AssetImage(
+                                  AppAssets.powerOff,
+                                ),
+                                fit: BoxFit.cover,
+                                color: Colors.black,
+                              ),
+                            ),
+                            HorizontalSpacing(value: 10),
+                            Text(
+                              "Terms & Conditions",
+                              style: textStyleWidget(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    VerticalSpacing(value: 15),
+                    InkWell(
+                      onTap: () {
+
+                        Get.to(ContactUs());
+
+                      },
+                      child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.black12)),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 20,
+                              padding: EdgeInsets.only(left: 10),
+                              child: Image(
+                                image: AssetImage(
+                                  AppAssets.powerOff,
+                                ),
+                                fit: BoxFit.cover,
+                                color: Colors.black,
+                              ),
+                            ),
+                            HorizontalSpacing(value: 10),
+                            Text(
+                              "Contact us",
+                              style: textStyleWidget(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 14,
+                                  color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    VerticalSpacing(value: 15),
+                    Get.find<LocalDatabase>().getToken == null ||
+                            Get.find<LocalDatabase>().getToken == ""
+                        ? Container()
+                        : InkWell(
+                            onTap: () {
+                              print("logout button is called");
+                              Get.find<LocalDatabase>().clearDB();
+
+                              Get.offAll(LoginScreen());
+                            },
+                            child: Container(
+                              height: 50,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 30,
+                                    height: 20,
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Image(
+                                      image: AssetImage(
+                                        AppAssets.powerOff,
+                                      ),
+                                      fit: BoxFit.cover,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  HorizontalSpacing(value: 10),
+                                  Text(
+                                    "Logout",
+                                    style: textStyleWidget(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 14,
+                                        color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                  ],
+                ),
+              )),
         ),
       ),
     ),

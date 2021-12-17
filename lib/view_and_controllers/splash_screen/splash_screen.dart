@@ -23,17 +23,6 @@ class SplashScreenn extends GetView<SplashScreenController> {
        splashTransition: SplashTransition.fadeTransition,
      );
 
-        /*     return Scaffold(
-          backgroundColor: Colors.white,
-          body: Center(
-            child: Container(
-                padding: EdgeInsets.all(20),
-                child: Image(
-                  image: AssetImage(AppAssets.applogo),
-                )
-            ),
-          ),
-        );*/
       },
 
     );

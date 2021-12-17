@@ -1,9 +1,19 @@
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
+import 'package:hotdealsgemet/core/services/local_database.dart';
+import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals.dart';
+import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals_controller.dart';
+import 'package:hotdealsgemet/view_and_controllers/contact_us/contact_us_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/faq/faq_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/search_deal/search_screen.dart';
 
 class HomeScreen extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeScreenController>(builder: (builder) {
+    return GetBuilder<HomeScreenController>(
+        init: HomeScreenController(),
+        builder: (builder) {
       return WillPopScope(
         onWillPop: () async {
           return false;
@@ -54,13 +64,23 @@ class HomeScreen extends GetView<HomeScreenController> {
                             color: AppColors.secondary_text_color)),
                   ),
                   VerticalSpacing(value: 15),
-                  ButtonWidget(
-                      "Find Deals", Icons.add_to_queue_outlined, () {}),
-                  ButtonWidget("Search Deals", Icons.search, () {}),
-                  ButtonWidget("FAQ", Icons.question_answer, () {}),
-                  ButtonWidget("Sign up", Icons.login, () {}),
-                  ButtonWidget("BUSINESS OWNERS", Icons.login, () {}),
-                  ButtonWidget("Contact Us", Icons.call, () {}),
+                  ButtonWidget("Find Deals", Icons.add_to_queue_outlined, () {
+                    Get.to(AllDeals());
+                  }),
+                  ButtonWidget("Search Deals", Icons.search, () {
+                    Get.to(SearchDeals());
+                  }),
+
+                  ButtonWidget("BUSINESS OWNERS", Icons.login, () {
+                    Get.to(() => BusinessOwners());
+                  }),
+                  ButtonWidget("FAQ", Icons.question_answer, () {
+                    Get.to(() => FAQ());
+
+                  }),
+                  ButtonWidget("Contact Us", Icons.call, () {
+                    Get.to(ContactUs());
+                  }),
                 ],
               ),
             ),

@@ -41,7 +41,7 @@ export 'package:hotdealsgemet/view_and_controllers/forget_password/forget_passwo
 export 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen_controller.dart';
 export 'package:hotdealsgemet/widget/custom_spacing.dart';
 export 'package:hotdealsgemet/widget/textstyle_widget.dart';
-export 'package:lottie/lottie.dart';
+
 
 
 
@@ -64,3 +64,8 @@ export 'package:hotdealsgemet/widget/textstyle_widget.dart';
 export 'package:hotdealsgemet/view_and_controllers/home_screen/home_screen_controller.dart';
 export 'package:hotdealsgemet/view_and_controllers/login_screen/login_screen_controller.dart';
 export 'package:hotdealsgemet/view_and_controllers/create_account/create_user_controller.dart';
+export 'package:get/get_state_manager/src/simple/get_controllers.dart';
+export 'package:get/get_core/src/get_main.dart';
+export 'package:get/get_navigation/src/extension_navigation.dart';
+export 'package:hotdealsgemet/view_and_controllers/business_owners/business_owners_screen.dart';
+export 'package:hotdealsgemet/view_and_controllers/splash_screen/splash_screen_controller.dart';

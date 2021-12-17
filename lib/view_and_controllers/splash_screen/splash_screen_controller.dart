@@ -25,4 +25,19 @@ class SplashScreenController extends GetxController {
     update();
   }
 
+
+  checkLogin()
+  {
+    final instance=db.getStorageInstance;
+    print("splash");
+    print(instance.read(AppStrings.token));
+    if(instance.read(AppStrings.token) == null || instance.read(AppStrings.token) == "")
+      isLoginUser=false;
+    else
+      isLoginUser=true;
+
+
+    update();
+  }
+
 }
