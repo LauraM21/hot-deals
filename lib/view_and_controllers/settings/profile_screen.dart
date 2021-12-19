@@ -145,7 +145,13 @@ class ProfileScreen extends GetView<SettingsController> {
         extendBody: true,
         bottomNavigationBar: InkWell(
           onTap: () {
-            // update button is pressed;
+            if(controller.userNameController.text.isEmpty && controller.iFile==null)
+              {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content:const  Text("Select image or Enter userName to update user profile"),
+                ));
+                return ;
+              }
             controller.updateUser(controller.iFile!);
           },
           child: Container(

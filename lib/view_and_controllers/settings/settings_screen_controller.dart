@@ -7,6 +7,7 @@ import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
 import 'package:hotdealsgemet/core/models/user_profile_model.dart';
 import 'package:hotdealsgemet/core/services/local_database.dart';
+import 'package:hotdealsgemet/view_and_controllers/home_screen/home_screen.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SettingsController extends GetxController
@@ -92,14 +93,21 @@ if(instance.read(AppStrings.token)==null || instance.read(AppStrings.token)=="")
     controlLoading(true);
     Map<String,String> userData={};
 
-    if(userNameController.text.trim().length != 0)
-    {
-      userData["userName"]=userNameController.text;
-    }
-    if(file != null)
+
+    if(file != null || userNameController.text.isNotEmpty)
       {
-        String imageUrl= await FirebaseStorageService.postFile(file, "profiles/");
-        userData["photoUrl"]=imageUrl;
+
+        if(userNameController.text.trim().length != 0)
+        {
+          userData["userName"]=userNameController.text;
+        }
+        if(file !=null)
+          {
+            String imageUrl= await FirebaseStorageService.postFile(file, "profiles/");
+            userData["photoUrl"]=imageUrl;
+
+          }
+
 
         await FirebaseFirestore.instance
             .collection('USERS').doc( Get
@@ -120,6 +128,7 @@ if(instance.read(AppStrings.token)==null || instance.read(AppStrings.token)=="")
           "DateTime":doc["DateTime"],
           "eMail":doc["eMail"],
         };
+        Get.offAll(HomeScreen());
       }
     controlLoading(false);
     update();

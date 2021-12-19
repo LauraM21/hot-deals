@@ -103,7 +103,7 @@ class _DealWidgetState extends State<DealWidget> {
                   Get.find<LocalDatabase>().getToken == "" ? Container() :    StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection('Fav')
-                    .doc("NGIGCwFbVPNssHLolt7xz6A8gmV2").collection("Favs").snapshots(),
+                    .doc(Get.find<LocalDatabase>().getToken).collection("Favs").snapshots(),
                 builder: (_,  snapshot) {
                   if(snapshot.hasData)
                     {

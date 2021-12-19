@@ -542,25 +542,33 @@ class CreateDeal extends GetView<CreateDealController> {
                                     return;
                                   }
                                   print("button called");
+
+                                  if(controller.iFile.isNull)
+                                    {
+                                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                        content:const  Text("Select Image file"),
+                                      ));
+                                      return;
+                                    }
                                   if (controller.BusinessNameController.text
                                       .trim()
                                       .isEmpty) {
                                     FocusScope.of(context).requestFocus(controller.BusinessNameFocus);
                                     return;
                                   }
-                                  // if (controller
-                                  //     .BusinessEmailAddressController.text
-                                  //     .trim()
-                                  //     .isEmpty) {
-                                  //   FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
-                                  //   return;
-                                  // }
-                                  // if(GetUtils.isEmail(controller.BusinessEmailAddressController.text))
-                                  //   {
-                                  //     print("email error");
-                                  //     FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
-                                  //     return;
-                                  //   }
+                                  if (controller
+                                      .BusinessEmailAddressController.text
+                                      .trim()
+                                      .isEmpty) {
+                                    FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
+                                    return;
+                                  }
+                                  if(!GetUtils.isEmail(controller.BusinessEmailAddressController.text))
+                                    {
+                                      print("email error");
+                                      FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
+                                      return;
+                                    }
                                   if (controller.descriptionController.text
                                       .trim()
                                       .isEmpty) {

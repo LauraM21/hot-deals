@@ -27,7 +27,7 @@ initBindings()
     LocalDatabase().storageInit();
     Get.put<LocalDatabase>(LocalDatabase());
     Get.put<FireStoreGateway>(FireStoreGateway());
-   // Get.put<FirebaseRemoteConfig>(FirebaseRemoteConfig());
+
 
 
 
@@ -44,7 +44,8 @@ initBindings()
     Get.put<CreateDealController>(CreateDealController());
     Get.put<ContactUsController>(ContactUsController());
     Get.put<BusinessOnwersController>(BusinessOnwersController());
-    Get.put<AllDealsController>(AllDealsController());
+   // Get.put<AllDealsController>(AllDealsController());
+    Get.putAsync(()async => AllDealsController());
     Get.put<SearchDealController>(SearchDealController());
     Get.put<FAQController>(FAQController());
 

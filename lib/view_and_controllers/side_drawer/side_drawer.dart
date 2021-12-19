@@ -44,6 +44,8 @@ ClipRRect SideDrawer(BuildContext context) {
                             child: MaterialButton(
                                 onPressed: () {
                                   // login funtion
+                                  Get.find<LoginController>().buttonControl(false);
+                                  Get.offAll(LoginScreen());
                                 },
                                 color: Colors.red,
                                 child: Text(
@@ -79,43 +81,46 @@ ClipRRect SideDrawer(BuildContext context) {
                           border:
                               Border.all(color: Colors.black.withOpacity(.2))),
                     ),
-                    VerticalSpacing(value: 15),
+
                     InkWell(
                       onTap: () {
                         Get.back();
                       },
-                      child: Container(
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black12)),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 20,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image(
-                                image: AssetImage(AppAssets.home_icon),
-                                fit: BoxFit.cover,
-                                color: Colors.black,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black12)),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 20,
+                                padding: EdgeInsets.only(left: 10),
+                                child: Image(
+                                  image: AssetImage(AppAssets.home_icon),
+                                  fit: BoxFit.cover,
+                                  color: Colors.black,
+                                ),
                               ),
-                            ),
-                            HorizontalSpacing(value: 10),
-                            Text(
-                              "Home",
-                              style: textStyleWidget(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14,
-                                  color: Colors.black),
-                            )
-                          ],
+                              HorizontalSpacing(value: 10),
+                              Text(
+                                "Home",
+                                style: textStyleWidget(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    VerticalSpacing(value: 15),
+
                     Get.find<LocalDatabase>().getToken == null ||
                             Get.find<LocalDatabase>().getToken == ""
                         ? Container()
@@ -124,314 +129,301 @@ ClipRRect SideDrawer(BuildContext context) {
                               Get.back();
                               Get.to(Settings());
                             },
-                            child: Container(
-                              height: 50,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(color: Colors.black12)),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 30,
-                                    height: 20,
-                                    padding: EdgeInsets.only(left: 10),
-                                    child: Image(
-                                      image: AssetImage(
-                                        AppAssets.user_profile_icon,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Container(
+                                height: 50,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(color: Colors.black12)),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 30,
+                                      height: 20,
+                                      padding: EdgeInsets.only(left: 10),
+                                      child: Image(
+                                        image: AssetImage(
+                                          AppAssets.user_profile_icon,
+                                        ),
+                                        fit: BoxFit.cover,
+                                        color: Colors.black,
                                       ),
-                                      fit: BoxFit.cover,
-                                      color: Colors.black,
                                     ),
-                                  ),
-                                  HorizontalSpacing(value: 10),
-                                  Text(
-                                    "Profile",
-                                    style: textStyleWidget(
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 14,
-                                        color: Colors.black),
-                                  )
-                                ],
+                                    HorizontalSpacing(value: 10),
+                                    Text(
+                                      "Profile",
+                                      style: textStyleWidget(
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 14,
+                                          color: Colors.black),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                    VerticalSpacing(value: 15),
+
                     Get.find<LocalDatabase>().getToken == null ||
                         Get.find<LocalDatabase>().getToken == ""? Container() :     InkWell(
                       onTap: () {
 
                         Get.to(FavDeals());
                       },
-                      child: Container(
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black12)),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 20,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image(
-                                image: AssetImage(
-                                  AppAssets.fav,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black12)),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 20,
+                                padding: EdgeInsets.only(left: 10),
+                                child: Image(
+                                  image: AssetImage(
+                                    AppAssets.fav,
+                                  ),
+                                  fit: BoxFit.cover,
+                                  color: Colors.black,
                                 ),
-                                fit: BoxFit.cover,
-                                color: Colors.black,
                               ),
-                            ),
-                            HorizontalSpacing(value: 10),
-                            Text(
-                              "Saved Deals",
-                              style: textStyleWidget(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14,
-                                  color: Colors.black),
-                            )
-                          ],
+                              HorizontalSpacing(value: 10),
+                              Text(
+                                "Saved Deals",
+                                style: textStyleWidget(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    VerticalSpacing(value: 15),
+
                     InkWell(
                       onTap: () {
 
                         Get.to(BusinessOwners());
 
                       },
-                      child: Container(
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black12)),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 20,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image(
-                                image: AssetImage(
-                                  AppAssets.advertice_with_us,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black12)),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 20,
+                                padding: EdgeInsets.only(left: 10),
+                                child: Image(
+                                  image: AssetImage(
+                                    AppAssets.advertice_with_us,
+                                  ),
+                                  fit: BoxFit.cover,
+                                  color: Colors.black,
                                 ),
-                                fit: BoxFit.cover,
-                                color: Colors.black,
                               ),
-                            ),
-                            HorizontalSpacing(value: 10),
-                            Text(
-                              "Advertise with us",
-                              style: textStyleWidget(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14,
-                                  color: Colors.black),
-                            )
-                          ],
+                              HorizontalSpacing(value: 10),
+                              Text(
+                                "Advertise with us",
+                                style: textStyleWidget(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                 /*   VerticalSpacing(value: 15),
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black12)),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 20,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image(
-                                image: AssetImage(
-                                  AppAssets.powerOff,
-                                ),
-                                fit: BoxFit.cover,
-                                color: Colors.black,
-                              ),
-                            ),
-                            HorizontalSpacing(value: 10),
-                            Text(
-                              "Biz Dictonary",
-                              style: textStyleWidget(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14,
-                                  color: Colors.black),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),*/
-                    VerticalSpacing(value: 15),
+
+
                     InkWell(
                       onTap: () {
 
                         Get.to(FAQ());
 
                       },
-                      child: Container(
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black12)),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 20,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image(
-                                image: AssetImage(
-                                  AppAssets.faq,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black12)),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 20,
+                                padding: EdgeInsets.only(left: 10),
+                                child: Image(
+                                  image: AssetImage(
+                                    AppAssets.faq,
+                                  ),
+                                  fit: BoxFit.cover,
+                                  color: Colors.black,
                                 ),
-                                fit: BoxFit.cover,
-                                color: Colors.black,
                               ),
-                            ),
-                            HorizontalSpacing(value: 10),
-                            Text(
-                              "FAQ",
-                              style: textStyleWidget(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14,
-                                  color: Colors.black),
-                            )
-                          ],
+                              HorizontalSpacing(value: 10),
+                              Text(
+                                "FAQ",
+                                style: textStyleWidget(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    VerticalSpacing(value: 15),
+
                     InkWell(
                       onTap: () {
                         Get.to(PPAndTC(type: "PP",));
 
                       },
-                      child: Container(
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black12)),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 20,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image(
-                                image: AssetImage(
-                                  AppAssets.privacy_policy,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black12)),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 20,
+                                padding: EdgeInsets.only(left: 10),
+                                child: Image(
+                                  image: AssetImage(
+                                    AppAssets.privacy_policy,
+                                  ),
+                                  fit: BoxFit.cover,
+                                  color: Colors.black,
                                 ),
-                                fit: BoxFit.cover,
-                                color: Colors.black,
                               ),
-                            ),
-                            HorizontalSpacing(value: 10),
-                            Text(
-                              "Privacy Policy",
-                              style: textStyleWidget(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14,
-                                  color: Colors.black),
-                            )
-                          ],
+                              HorizontalSpacing(value: 10),
+                              Text(
+                                "Privacy Policy",
+                                style: textStyleWidget(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    VerticalSpacing(value: 15),
+
                     InkWell(
                       onTap: () {
                         Get.to(PPAndTC(type: "TC",));
 
                       },
-                      child: Container(
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black12)),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 20,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image(
-                                image: AssetImage(
-                                  AppAssets.terms_conditions,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Container(
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black12)),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 20,
+                                padding: EdgeInsets.only(left: 10),
+                                child: Image(
+                                  image: AssetImage(
+                                    AppAssets.terms_conditions,
+                                  ),
+                                  fit: BoxFit.cover,
+                                  color: Colors.black,
                                 ),
-                                fit: BoxFit.cover,
-                                color: Colors.black,
                               ),
-                            ),
-                            HorizontalSpacing(value: 10),
-                            Text(
-                              "Terms & Conditions",
-                              style: textStyleWidget(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14,
-                                  color: Colors.black),
-                            )
-                          ],
+                              HorizontalSpacing(value: 10),
+                              Text(
+                                "Terms & Conditions",
+                                style: textStyleWidget(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    VerticalSpacing(value: 15),
+
                     InkWell(
                       onTap: () {
 
                         Get.to(ContactUs());
 
                       },
-                      child: Container(
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: Colors.black12)),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 30,
-                              height: 20,
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image(
-                                image: AssetImage(
-                                  AppAssets.contact_us,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+
+                        child: Container(
+                          height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black12)),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 20,
+                                padding: EdgeInsets.only(left: 10),
+                                child: Image(
+                                  image: AssetImage(
+                                    AppAssets.contact_us,
+                                  ),
+                                  fit: BoxFit.cover,
+                                  color: Colors.black,
                                 ),
-                                fit: BoxFit.cover,
-                                color: Colors.black,
                               ),
-                            ),
-                            HorizontalSpacing(value: 10),
-                            Text(
-                              "Contact us",
-                              style: textStyleWidget(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 14,
-                                  color: Colors.black),
-                            )
-                          ],
+                              HorizontalSpacing(value: 10),
+                              Text(
+                                "Contact us",
+                                style: textStyleWidget(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14,
+                                    color: Colors.black),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    VerticalSpacing(value: 15),
+
                     Get.find<LocalDatabase>().getToken == null ||
                             Get.find<LocalDatabase>().getToken == ""
                         ? Container()
@@ -442,35 +434,38 @@ ClipRRect SideDrawer(BuildContext context) {
                               Get.find<LoginController>().buttonControl(false);
                               Get.offAll(LoginScreen());
                             },
-                            child: Container(
-                              height: 50,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 30,
-                                    height: 20,
-                                    padding: EdgeInsets.only(left: 10),
-                                    child: Image(
-                                      image: AssetImage(
-                                        AppAssets.powerOff,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Container(
+                                height: 50,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 30,
+                                      height: 20,
+                                      padding: EdgeInsets.only(left: 10),
+                                      child: Image(
+                                        image: AssetImage(
+                                          AppAssets.powerOff,
+                                        ),
+                                        fit: BoxFit.cover,
+                                        color: Colors.white,
                                       ),
-                                      fit: BoxFit.cover,
-                                      color: Colors.white,
                                     ),
-                                  ),
-                                  HorizontalSpacing(value: 10),
-                                  Text(
-                                    "Logout",
-                                    style: textStyleWidget(
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 14,
-                                        color: Colors.white),
-                                  )
-                                ],
+                                    HorizontalSpacing(value: 10),
+                                    Text(
+                                      "Logout",
+                                      style: textStyleWidget(
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 14,
+                                          color: Colors.white),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),

@@ -72,6 +72,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                   }),
 
                   ButtonWidget("BUSINESS OWNERS", Icons.login, () {
+                    Get.find<LocalDatabase>().getToken== "" || Get.find<LocalDatabase>().getToken== null ? null :
                     Get.to(() => BusinessOwners());
                   }),
                   ButtonWidget("FAQ", Icons.question_answer, () {

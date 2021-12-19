@@ -46,7 +46,10 @@ class CreateUserController extends GetxController {
        await Get.find<SettingsController>().getUserProfile();
        Get.to(HomeScreen());
 
-     }
+     }else
+       {
+         Get.defaultDialog(title: "Accont Issue",middleText: "Enter correct Details");
+       }
     await buttonControl(false);
 
   //store token in locad db

@@ -69,9 +69,13 @@ class LoginController extends GetxController
         password_controller.clear();
 
         Get.to(HomeScreen());
-      }
+      }else
+        {
+          await buttonControl(false);
+          Get.defaultDialog(title: "Login Issue",middleText: "Enter correct E-mail and Password");
+        }
 
-  await buttonControl(false);
+
 
   }
 

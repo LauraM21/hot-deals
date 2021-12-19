@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
+import 'package:hotdealsgemet/core/services/local_database.dart';
 import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals_controller.dart';
 import 'package:hotdealsgemet/widget/deal_widget.dart';
 
@@ -40,7 +42,7 @@ class AllDeals extends GetView<AllDealsController> {
 
                               return InkWell(
                                   onTap: (){
-                                    controller.addToFavDeal(controller.listOfDeals[index].id);
+                                    Get.find<LocalDatabase>().getToken== "" || Get.find<LocalDatabase>().getToken== null ? null : controller.addToFavDeal(controller.listOfDeals[index].id);
                                   },
                                   child: DealWidget(controller.listOfDeals[index]));
 

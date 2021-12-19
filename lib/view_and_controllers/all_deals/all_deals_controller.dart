@@ -15,19 +15,25 @@ class AllDealsController extends GetxController {
 
   late Stream stream;
 
-  @override
-  void onInit() async {
-    instance = db.getStorageInstance;
 
-    loadingController(true);
-
-
-
-    listOfDeals = await FirebaseStorageService.getAllDeals();
-    print("list of deals lenth is ${listOfDeals.length}");
-    loadingController(false);
-    update();
+  AllDealsController()
+  {
+    getAllDeals();
   }
+
+   getAllDeals()
+   async{
+     instance = db.getStorageInstance;
+
+     loadingController(true);
+
+
+
+     listOfDeals = await FirebaseStorageService.getAllDeals();
+     print("list of deals lenth is ${listOfDeals.length}");
+     loadingController(false);
+     update();
+   }
 
   loadingController(bool value) {
     isLoading = value;

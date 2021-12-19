@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:hotdealsgemet/view_and_controllers/home_screen/home_screen.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:uuid/uuid.dart';
 
@@ -123,6 +124,8 @@ async{
    dealData["paidData"]="null";
    dealData["paidType"]="null";
    await Get.find<FireStoreGateway>().createDeal(dealData);
+
+   Get.offAll(HomeScreen());
 
    // go to payment procedure
 

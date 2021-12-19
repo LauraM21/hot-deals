@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 
 import 'package:hotdealsgemet/core/extensions/package_imports_and_exports.dart';
+import 'package:hotdealsgemet/core/services/local_database.dart';
 import 'package:hotdealsgemet/view_and_controllers/all_deals/all_deals_controller.dart';
 import 'package:hotdealsgemet/view_and_controllers/search_deal/search_screen_controller.dart';
 import 'package:hotdealsgemet/widget/deal_widget.dart';
@@ -92,7 +94,12 @@ class SearchDeals extends GetView<SearchDealController> {
                       shrinkWrap: true,
                       itemCount: controller.listOfDeals.length,
                       itemBuilder: (_, index) {
-                        return DealWidget(controller.listOfDeals[index]);
+                        return InkWell(
+                            onTap: (){
+
+                              Get.find<LocalDatabase>().getToken== "" || Get.find<LocalDatabase>().getToken== null ? null : controller.addToFavDeal(controller.listOfDeals[index].id);
+                            },
+                            child: DealWidget(controller.listOfDeals[index]));
                       })
             ],
           ),

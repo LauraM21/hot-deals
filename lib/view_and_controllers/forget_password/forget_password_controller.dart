@@ -19,13 +19,13 @@ class ForgetPasswordController extends GetxController
   String value=  await Get.find<AuthenticationService>().requestOtpMail(emailController.text);
   if(value==AppStrings.success)
     {
-      print(value);
+      Get.defaultDialog(title: "Forget Password Request",middleText: "Check Your Email to Reset Passoword");
     }
     if(value==AppStrings.failure)
     {
       print(value);
 
-       Get.dialog(failureDialogBox());
+      Get.defaultDialog(title: "Forget Password Request",middleText: "Enter Account Created Email");
     }
 
     //Get.back();
@@ -41,29 +41,7 @@ class ForgetPasswordController extends GetxController
   }
 
 
-  failureDialogBox()
-  {
-    return Container(
-      padding: EdgeInsets.all(10),
-      color: Colors.white,
-      width: 100,
-      height: 100,
-      alignment: Alignment.center,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 75,
-            height: 75,
-            color: Colors.red,
 
-          ),
-          VerticalSpacing(),
-          Text("Entered email not found",style: textStyleWidget(),)
-        ],
-      ),
-    );
-  }
 
 
   goBack()

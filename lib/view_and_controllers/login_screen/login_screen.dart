@@ -129,6 +129,9 @@ class LoginScreen extends GetView<LoginController> {
                           return ;
                         }
                         if (controller.email_controller.text.trim().isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content:const  Text("Enter E-mail"),
+                          ));
                           FocusScope.of(context)
                               .requestFocus(controller.emailFocus);
                           return;
@@ -137,6 +140,9 @@ class LoginScreen extends GetView<LoginController> {
                         }
 
                         if (controller.password_controller.text.trim().isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content:const  Text("Enter Password"),
+                          ));
                           FocusScope.of(context)
                               .requestFocus(controller.passwordFocus);
 
@@ -260,5 +266,10 @@ class LoginScreen extends GetView<LoginController> {
     });
   }
 
+
+   toastMessage(context)
+   {
+
+   }
 
 }

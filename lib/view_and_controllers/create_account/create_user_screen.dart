@@ -141,6 +141,9 @@ class CreateUser extends GetView<CreateUserController> {
                             return;
                           }
                           if (controller.email_controller.text.trim().isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content:const  Text("Enter E-mail"),
+                            ));
                             return;
                           } else if (!controller
                               .email_controller.text.isEmail) {
@@ -149,6 +152,9 @@ class CreateUser extends GetView<CreateUserController> {
                           if (controller.password_controller.text
                               .trim()
                               .isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content:const  Text("Enter E-mail"),
+                            ));
                             return;
                           }
                           controller.createAccount();
