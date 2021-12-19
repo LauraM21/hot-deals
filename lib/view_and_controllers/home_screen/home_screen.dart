@@ -18,7 +18,7 @@ class HomeScreen extends GetView<HomeScreenController> {
         onWillPop: () async {
           return false;
         },
-        child: Scaffold(
+        child: controller.isLoading ? Container() :Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: 0,
@@ -32,8 +32,8 @@ class HomeScreen extends GetView<HomeScreenController> {
                   fontSize: FontSize.h1),
             ),
           ),
-          drawer: SideDrawer(context),
-          body: SingleChildScrollView(
+          drawer:  SideDrawer(context),
+          body:SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(

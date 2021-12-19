@@ -57,11 +57,12 @@ ClipRRect SideDrawer(BuildContext context) {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 VerticalSpacing(value: 10),
-                                CircleAvatar(
+                                Get.find<SettingsController>()
+                                    .json["photoUrl"]== "" ? Container():    CircleAvatar(
 
                                   backgroundImage:  NetworkImage(
                                         Get.find<SettingsController>()
-                                            .json["photoUrl"]!),
+                                            .json["photoUrl"]),
                                   radius: 40,
                                   ),
 
@@ -178,7 +179,7 @@ ClipRRect SideDrawer(BuildContext context) {
                               padding: EdgeInsets.only(left: 10),
                               child: Image(
                                 image: AssetImage(
-                                  AppAssets.powerOff,
+                                  AppAssets.fav,
                                 ),
                                 fit: BoxFit.cover,
                                 color: Colors.black,
@@ -218,7 +219,7 @@ ClipRRect SideDrawer(BuildContext context) {
                               padding: EdgeInsets.only(left: 10),
                               child: Image(
                                 image: AssetImage(
-                                  AppAssets.powerOff,
+                                  AppAssets.advertice_with_us,
                                 ),
                                 fit: BoxFit.cover,
                                 color: Colors.black,
@@ -294,7 +295,7 @@ ClipRRect SideDrawer(BuildContext context) {
                               padding: EdgeInsets.only(left: 10),
                               child: Image(
                                 image: AssetImage(
-                                  AppAssets.powerOff,
+                                  AppAssets.faq,
                                 ),
                                 fit: BoxFit.cover,
                                 color: Colors.black,
@@ -333,7 +334,7 @@ ClipRRect SideDrawer(BuildContext context) {
                               padding: EdgeInsets.only(left: 10),
                               child: Image(
                                 image: AssetImage(
-                                  AppAssets.powerOff,
+                                  AppAssets.privacy_policy,
                                 ),
                                 fit: BoxFit.cover,
                                 color: Colors.black,
@@ -372,7 +373,7 @@ ClipRRect SideDrawer(BuildContext context) {
                               padding: EdgeInsets.only(left: 10),
                               child: Image(
                                 image: AssetImage(
-                                  AppAssets.powerOff,
+                                  AppAssets.terms_conditions,
                                 ),
                                 fit: BoxFit.cover,
                                 color: Colors.black,
@@ -412,7 +413,7 @@ ClipRRect SideDrawer(BuildContext context) {
                               padding: EdgeInsets.only(left: 10),
                               child: Image(
                                 image: AssetImage(
-                                  AppAssets.powerOff,
+                                  AppAssets.contact_us,
                                 ),
                                 fit: BoxFit.cover,
                                 color: Colors.black,
@@ -438,7 +439,7 @@ ClipRRect SideDrawer(BuildContext context) {
                             onTap: () {
                               print("logout button is called");
                               Get.find<LocalDatabase>().clearDB();
-
+                              Get.find<LoginController>().buttonControl(false);
                               Get.offAll(LoginScreen());
                             },
                             child: Container(

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
@@ -13,22 +14,24 @@ class AuthenticationService extends GetxController
 
   login(String email,String password)
   async{
-    print("this funtion called");
-   UserCredential userCredential =await  FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
 
-    // var data= await GetxFire.signInWithEmailAndPassword(
-    //   email:email,
-    //   password: password,
-    //   onSuccess: (userCredential) {
-    //     print("0000000000000000000");
-    //     print(userCredential.toString());
-    //     return userCredential;
-    //   },
-    //   onError: (code, message) {
-    //     print("111111111111111");
-    //
-    //   },
-    // );
+     UserCredential ? userCredential ;
+
+
+     try{
+       userCredential= await  FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+     } on FirebaseAuthException catch (e)
+     {
+
+       return userCredential;
+     }
+
+
+
+
+
+
+
 
     return userCredential;
   }
@@ -39,7 +42,13 @@ class AuthenticationService extends GetxController
     try {
 
 
-      UserCredential data =await  FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+   late   UserCredential data;
+     if(!await FirebaseAuth.instance.isSignInWithEmailLink(email))
+       {
+   data =await  FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+
+       }
+
       // var data = await GetxFire.createUserWithEmailAndPassword(
       //   isSuccessDialog: true,
       //   isErrorDialog: true,
@@ -57,6 +66,7 @@ class AuthenticationService extends GetxController
     {
 
     }
+
 
 
 

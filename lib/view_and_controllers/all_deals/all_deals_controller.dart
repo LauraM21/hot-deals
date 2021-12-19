@@ -24,6 +24,7 @@ class AllDealsController extends GetxController {
 
 
     listOfDeals = await FirebaseStorageService.getAllDeals();
+    print("list of deals lenth is ${listOfDeals.length}");
     loadingController(false);
     update();
   }

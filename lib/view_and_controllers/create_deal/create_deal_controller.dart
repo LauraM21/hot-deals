@@ -89,13 +89,13 @@ class CreateDealController extends GetxController
 
   data()
 async{
-  print("called offerings funtion");
-
-  Offerings offerings = await Purchases.getOfferings();
-  if (offerings.current != null) {
-    print("all data");
-  }
-  print(offerings.all.length);
+  // print("called offerings funtion");
+  //
+  // Offerings offerings = await Purchases.getOfferings();
+  // if (offerings.current != null) {
+  //   print("all data");
+  // }
+  // print(offerings.all.length);
 
 
 }

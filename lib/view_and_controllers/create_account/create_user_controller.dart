@@ -7,6 +7,7 @@ import 'package:hotdealsgemet/core/api_calls/firestore_gateway.dart';
 import 'package:hotdealsgemet/core/app_rss/app_strings.dart';
 import 'package:hotdealsgemet/core/services/local_database.dart';
 import 'package:hotdealsgemet/view_and_controllers/home_screen/home_screen.dart';
+import 'package:hotdealsgemet/view_and_controllers/settings/settings_screen_controller.dart';
 
 class CreateUserController extends GetxController {
 
@@ -25,8 +26,12 @@ class CreateUserController extends GetxController {
     var userCredential= await Get.find<AuthenticationService>()
         .createUserAccount(email_controller.text, password_controller.text);
 
+    print(userCredential);
+    print("");
+    await buttonControl(false);
    if(userCredential!= null)
      {
+       await buttonControl(false);
        final instance=db.getStorageInstance;
        instance.write(AppStrings.token,userCredential.user!.uid);
 
@@ -38,7 +43,7 @@ class CreateUserController extends GetxController {
          AppStrings.eMail:userCredential!.user!.email,
        };
        await Get.find<FireStoreGateway>().createUser(userDate);
-
+       await Get.find<SettingsController>().getUserProfile();
        Get.to(HomeScreen());
 
      }

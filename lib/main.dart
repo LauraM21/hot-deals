@@ -12,7 +12,7 @@ import 'view_and_controllers/splash_screen/splash_screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Purchases.setDebugLogsEnabled(true);
-  await Purchases.setup("goog_qRFBQKVsjgBeQZRjTmxituvrYti");
+  await Purchases.setup("goog_QJSNvNkxJfQORzmhmuvRGqXfOJA");
   await GetStorage.init();
 
   await   Firebase.initializeApp();

@@ -46,28 +46,32 @@ class LoginController extends GetxController
 
   loginValidations()
  async {
-    print("loginValidations called");
+
   await buttonControl(true);
-    // UserCredential? date=   await auth.login(email_controller.text, password_controller.text);
+
   var date=  await auth.login(email_controller.text, password_controller.text);
-    await buttonControl(false);
-    print("loginValidations 1");
+
+
 
   if(date !=null )
 
       {
+        await buttonControl(false);
+
         print("heloow world");
+       print(date!.user!.uid);
         final instance=db.getStorageInstance;
         instance.write(AppStrings.token,date.user!.uid);
 
       await Get.find<SettingsController>().getUserProfile();
 
+        email_controller.clear();
+        password_controller.clear();
+
         Get.to(HomeScreen());
       }
 
-    // save the token
-    // redirect to home page
-    // clear the controllers
+  await buttonControl(false);
 
   }
 

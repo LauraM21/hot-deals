@@ -18,7 +18,6 @@ class SettingsController extends GetxController
   late UserProfile userprofile;
   Map<String,dynamic> json={};
 
-
   late final instance;
   SettingsController()
   {

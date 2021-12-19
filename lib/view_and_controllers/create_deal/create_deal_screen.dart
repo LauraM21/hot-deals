@@ -548,18 +548,19 @@ class CreateDeal extends GetView<CreateDealController> {
                                     FocusScope.of(context).requestFocus(controller.BusinessNameFocus);
                                     return;
                                   }
-                                  if (controller
-                                      .BusinessEmailAddressController.text
-                                      .trim()
-                                      .isEmpty) {
-                                    FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
-                                    return;
-                                  }
-                                  if(GetUtils.isEmail(controller.BusinessEmailAddressController.text))
-                                    {
-                                      FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
-                                      return;
-                                    }
+                                  // if (controller
+                                  //     .BusinessEmailAddressController.text
+                                  //     .trim()
+                                  //     .isEmpty) {
+                                  //   FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
+                                  //   return;
+                                  // }
+                                  // if(GetUtils.isEmail(controller.BusinessEmailAddressController.text))
+                                  //   {
+                                  //     print("email error");
+                                  //     FocusScope.of(context).requestFocus(controller.BusinessEmailAddressFocus);
+                                  //     return;
+                                  //   }
                                   if (controller.descriptionController.text
                                       .trim()
                                       .isEmpty) {

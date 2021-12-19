@@ -20,6 +20,14 @@ class AppAssets
 
   static String fav_icon="assets/icons/fav.png";
 
+  static String fav="assets/icons/fav.png";
+  static String advertice_with_us="assets/icons/advertice_with_us.png";
+  static String faq="assets/icons/faq.png";
+  static String privacy_policy="assets/icons/privacy_policy.png";
+  static String terms_conditions="assets/icons/terms_conditions.png";
+  static String contact_us="assets/icons/contact_us.png";
+
+
 
 
   //images
